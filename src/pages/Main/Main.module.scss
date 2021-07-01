@@ -1,0 +1,20 @@
+@use '../../scss/sizes' as *;
+.Main {
+	padding: clamp(1rem, 5vw, 5rem);
+}
+.MainLeft {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 1.4rem;
+}
+.MainLeft > p {
+	margin: 0 auto;
+}
+.MainRight {
+	margin: 0 auto;
+	width: clamp(18rem, 100%, 34rem);
+	@include for-tablet-landscape-up {
+		width: clamp(23rem, 100%, 30rem);
+	}
+}
