@@ -1,0 +1,82 @@
+@use '../../../scss/colors.scss' as *;
+@use '../../../scss/sizes.scss' as *;
+.navbar {
+	padding: 0 3rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	display: flex;
+	background-color: $color-primary;
+	height: $navbar-height;
+	align-items: center;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navigationWrapper {
+	width: 100%;
+
+	background-color: $color-primary;
+}
+.menuList {
+	list-style: none;
+	color: inherit;
+	margin: 0;
+	padding: 0;
+	// display: none;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+}
+.menuButton {
+	background-color: transparent;
+	border: none;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+}
+
+.menuButton:focus {
+	outline: 2px dotted $color-secondary;
+}
+
+// .Logo {
+// 	height: 2rem;
+// 	font-size: 2rem;
+// 	line-height: 100%;
+// 	text-align: center;
+// 	position: absolute;
+// 	left: 50%;
+// 	top: 50%;
+// 	transform: translate(-50%, -50%);
+// // }
+// .NavRightSide {
+// 	display: flex;
+// 	flex-direction: row;
+// 	position: relative;
+// 	margin-left: auto;
+// }
+
+// .NavRightSide > * {
+// 	margin-left: 60px;
+// }
+
+// .SideDrawerToggler {
+// 	font-size: 2rem;
+// 	width: 2rem;
+// 	height: 2rem;
+// }
+
+// @media (min-width: $grid-breakpoints-lg) {
+// 	.NavigationItems {
+// 		display: flex;
+// 	}
+// 	.SideDrawerToggler {
+// 		display: none;
+// 	}
+// }

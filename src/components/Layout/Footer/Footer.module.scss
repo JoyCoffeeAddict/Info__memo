@@ -1,0 +1,16 @@
+@use '../../../scss/colors.scss' as *;
+@use '../../../scss/sizes.scss' as *;
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: $footer-height;
+	padding-right: 8rem;
+	text-align: end;
+	background-color: $color-secondary;
+}
