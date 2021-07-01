@@ -1,0 +1,45 @@
+.InputWrapper {
+	position: relative;
+}
+
+.Input {
+	font-size: 1rem;
+	line-height: 100%;
+	padding: 0;
+	border: 0;
+	border-bottom: 1px solid black;
+
+	color: black;
+	background-color: #fff;
+	width: 100%;
+}
+
+.LabelDescription {
+	color: #000;
+	background-color: transparent;
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	transform: translateY(-30px);
+	transition: 0.2s;
+}
+
+.Input::placeholder {
+	color: transparent;
+}
+
+.Input:placeholder-shown ~ .LabelDescription {
+	transform: translateY(0);
+}
+
+.Input:focus ~ .LabelDescription {
+	transform: translateY(-30px);
+}
+.InvalidResponse {
+	line-height: 150%;
+	font-size: 0.75rem;
+
+	/* color: #cc0000; */
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import Methods from '../../components/Methods/Methods';
 import classes from './Main.module.scss';
-
 const Main = props => (
 	<div className={`${classes.Main} LayoutContent`}>
 		<div className={`${classes.MainLeft} LeftSide`}>

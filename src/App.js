@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './components/Layout/Layout';
-import Main from './pages/Main/Main';
 import {Switch, Route, Redirect} from 'react-router-dom';
+import Main from './pages/Main/Main';
 function App() {
 	let routes = (
 		<Switch>

@@ -1,0 +1,69 @@
+@import '../../../scss/sizes';
+
+.Scene {
+	width: 100%;
+}
+
+.Flashcard {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	border: 1px solid black;
+	border-radius: 40px;
+	transform-style: preserve-3d;
+	transition: transform 1s;
+}
+
+.FlashcardFront,
+.FlashcardBack {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	box-sizing: content-box;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	font-size: 2rem;
+	text-align: center;
+	border-radius: 40px;
+	backface-visibility: hidden;
+	/* overflow: auto;
+	overflow-wrap: anywhere;
+	*/
+}
+.FlashcardFront {
+	background-color: white;
+}
+
+.FlashcardBack {
+	background-color: #c4c4c4;
+	transform: rotateX(180deg);
+}
+
+.Flashcard .FlashcardBack .FlashcardText {
+	overflow: hidden;
+}
+
+.Flashcard .FlashcardFront .FlashcardText {
+	overflow: auto;
+}
+
+.Flashcard.Flipped .FlashcardFront .FlashcardText {
+	overflow: hidden;
+}
+
+.Flashcard.Flipped .FlashcardBack .FlashcardText {
+	overflow: auto;
+}
+.Flashcard.Flipped {
+	transform: rotateX(180deg);
+}
+
+.FlashcardText {
+	/* 2 * border-radius*/
+	height: calc(100% - 80px);
+	width: calc(100% - 80px);
+	overflow-wrap: anywhere;
+}

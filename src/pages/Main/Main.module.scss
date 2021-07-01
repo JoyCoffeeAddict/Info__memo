@@ -12,7 +12,7 @@
 	margin: 0 auto;
 }
 .MainRight {
-	margin: 0 auto;
+	margin: auto;
 	width: clamp(18rem, 100%, 34rem);
 	@include for-tablet-landscape-up {
 		width: clamp(23rem, 100%, 30rem);
