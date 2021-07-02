@@ -14,7 +14,7 @@
 
 	transition: all 0.5s ease-out;
 
-	@media (min-width: $grid-breakpoints-lg  + 1px) {
+	@include for-tablet-landscape-up {
 		width: 75%;
 		padding: 32px 72px;
 		left: 12.5%;
@@ -22,7 +22,7 @@
 		height: 90%;
 	}
 
-	@media (min-width: $grid-breakpoints-xl + 1px) {
+	@include for-big-desktop-up {
 		width: 50%;
 		padding: 32px 72px;
 		left: 25%;

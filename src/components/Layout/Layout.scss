@@ -7,13 +7,10 @@
 	grid-auto-flow: row;
 	grid-auto-columns: 1fr;
 	grid-gap: 2rem;
+	padding: clamp(1rem, 5vw, 5rem);
+
 	@include for-tablet-landscape-up {
 		grid-auto-flow: column;
 		grid-auto-rows: 1fr;
 	}
-}
-
-.LeftSide,
-.RightSide {
-	flex-basis: 100%;
 }

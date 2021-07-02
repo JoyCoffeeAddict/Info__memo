@@ -1,0 +1,33 @@
+/* .Flashcards {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+} */
+
+@use '../../scss/sizes.scss' as *;
+
+// .Flashcards {
+// }
+
+.FlashcardsLeft {
+	display: grid;
+	align-content: center;
+	gap: 3rem;
+	min-height: 50vh;
+}
+
+.FlashcardsRight {
+	display: grid;
+	align-items: center;
+}
+.FlashcardsLeft > *,
+.FlashcardsRight > * {
+	@include for-tablet-landscape-up {
+		width: clamp(24rem, 80%, 37rem);
+		justify-self: flex-end;
+	}
+}
+
+.FlashcardsRight > * {
+	justify-self: flex-start;
+}

@@ -8,10 +8,12 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
 p {
 	max-width: $paragraph-max-width;
 	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
