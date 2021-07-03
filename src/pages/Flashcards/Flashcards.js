@@ -12,16 +12,21 @@ const Flashcards = props => {
 	return (
 		<>
 			<div className={`LayoutContent ${classes.Flashcards}`}>
-				<div className={classes.FlashcardsLeft}>
+				<span className={classes.StudyWrapper}>
 					<Button clicked={() => setIsChoosingDeck(state => !state)}>STUDY</Button>
-
+				</span>
+				<span className={classes.EditDecksWrapper}>
 					<Link to="/flashcards-edit-decks">
 						<Button> EDIT DECKS</Button>
 					</Link>
+				</span>
+				<span className={classes.FlashcardWrapper}>
+					<EmptyFlashcard whiteText="gato" greyText="cat" />
+				</span>
+				{/* <div className={classes.FlashcardsLeft}>
 				</div>
 				<div className={classes.FlashcardsRight}>
-					<EmptyFlashcard whiteText="gato" greyText="cat" />
-				</div>
+				</div> */}
 			</div>
 			<Modal show={isChoosingDeck} modalClosed={() => setIsChoosingDeck(state => !state)}>
 				<ModalList>

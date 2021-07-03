@@ -1,23 +1,49 @@
 @use '../../scss/sizes' as *;
-.FlashcardsHelpLeft {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	font-size: 1.4rem;
-}
-.FlashcardsHelpLeft > p {
-	margin: 0 auto;
-}
-.FlashcardsHelpRight {
-	margin: auto;
+
+.FlashcardsHelp {
 	display: grid;
-	grid-auto-flow: row;
-	gap: 2rem;
-	width: clamp(18rem, 100%, 34rem);
+	gap: 1rem;
+	justify-items: center;
+	margin: auto;
 	@include for-tablet-landscape-up {
-		width: clamp(23rem, 100%, 40rem);
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr auto;
+		align-items: center;
+		width: clamp(56rem, 70%, 90rem);
+		gap: 2rem;
 	}
 }
+
+.FlashcardsHelpLeft {
+	grid-column: 1;
+	grid-row: 1 / 3;
+}
+.FlashcardWrapper {
+	width: 100%;
+	@include for-tablet-landscape-up {
+		width: clamp(18rem, 80%, 40rem);
+	}
+}
+
+// .FlashcardsHelpLeft {
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	font-size: 1.4rem;
+// }
+// .FlashcardsHelpLeft > p {
+// 	margin: 0 auto;
+// }
+// .FlashcardsHelpRight {
+// 	margin: auto;
+// 	display: grid;
+// 	grid-auto-flow: row;
+// 	gap: 2rem;
+// 	width: clamp(18rem, 100%, 34rem);
+// 	@include for-tablet-landscape-up {
+// 		width: clamp(23rem, 100%, 40rem);
+// 	}
+// }
 
 .FlashcardsHelpLink,
 .FlashcardsHelpButton {

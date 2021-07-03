@@ -1,33 +1,63 @@
-/* .Flashcards {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-} */
+// /* .Flashcards {
+// 	width: 100%;
+// 	display: flex;
+// 	flex-direction: row;
+// } */
 
 @use '../../scss/sizes.scss' as *;
 
-// .Flashcards {
-// }
-
-.FlashcardsLeft {
+.Flashcards {
 	display: grid;
-	align-content: center;
-	gap: 3rem;
-	min-height: 50vh;
-}
-
-.FlashcardsRight {
-	display: grid;
-	align-items: center;
-}
-.FlashcardsLeft > *,
-.FlashcardsRight > * {
+	grid-auto-flow: row;
 	@include for-tablet-landscape-up {
-		width: clamp(24rem, 80%, 37rem);
-		justify-self: flex-end;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		width: clamp(56rem, 70%, 90rem);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.StudyWrapper {
+	@include for-tablet-landscape-up {
+		grid-column: 1;
+		grid-row: 1 / 1;
+		align-self: end;
+	}
+}
+.EditDecksWrapper {
+	@include for-tablet-landscape-up {
+		grid-column: 1;
+		grid-row: 2 / 2;
+		align-self: start;
+	}
+}
+.FlashcardWrapper {
+	@include for-tablet-landscape-up {
+		grid-column: 2;
+		grid-row: 1 /3;
+		align-self: center;
 	}
 }
 
-.FlashcardsRight > * {
-	justify-self: flex-start;
-}
+// .FlashcardsLeft {
+// 	display: grid;
+// 	align-content: center;
+// 	gap: 3rem;
+// 	min-height: 50vh;
+// }
+
+// .FlashcardsRight {
+// 	display: grid;
+// 	align-items: center;
+// }
+// .FlashcardsLeft > *,
+// .FlashcardsRight > * {
+// 	@include for-tablet-landscape-up {
+// 		width: clamp(24rem, 80%, 37rem);
+// 		justify-self: flex-end;
+// 	}
+// }
+
+// .FlashcardsRight > * {
+// 	justify-self: flex-start;
+// }
