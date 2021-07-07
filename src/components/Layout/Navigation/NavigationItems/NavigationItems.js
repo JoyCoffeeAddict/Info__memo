@@ -17,10 +17,10 @@ const NavigationItems = ({logoutFunc, isAuth, isMenuClosed}) => {
 			) : (
 				<>
 					<NavigationItem isClosed={isMenuClosed} link="/register">
-						Register{' '}
+						Register
 					</NavigationItem>
 					<NavigationItem isClosed={isMenuClosed} link="/log-in">
-						Log in{' '}
+						Log in
 					</NavigationItem>
 				</>
 			)}

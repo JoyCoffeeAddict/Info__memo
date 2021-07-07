@@ -1,8 +1,10 @@
-import styless from './Navbar.module.scss';
 import React, {useState} from 'react';
-import NavigationItems from './NavigationItems/NavigationItems';
 import {NavLink} from 'react-router-dom';
-const Navbar = ({isAuth}) => {
+import {connect} from 'react-redux';
+import NavigationItems from './NavigationItems/NavigationItems';
+import * as actions from '../../../store/actions/actions';
+import styless from './Navbar.module.scss';
+const Navbar = props => {
 	const [isMenuClosed, setIsMenuClosed] = useState(true);
 	return (
 		<>
@@ -18,7 +20,11 @@ const Navbar = ({isAuth}) => {
 						</button>
 						<nav className={styless.navigationWrapper}>
 							<ul className={styless.menuList}>
-								<NavigationItems isMenuClosed={isMenuClosed} logoutFunc={() => {}} isAuth={false} />
+								<NavigationItems
+									isMenuClosed={isMenuClosed}
+									logoutFunc={props.onLogout}
+									isAuth={props.isAuth}
+								/>
 							</ul>
 						</nav>
 					</div>
@@ -28,4 +34,14 @@ const Navbar = ({isAuth}) => {
 	);
 };
 
-export default Navbar;
+const mapStateToProps = state => {
+	return {
+		isAuth: state.auth.token !== null,
+	};
+};
+const mapDispatchToProps = dispatch => {
+	return {
+		onLogout: () => dispatch(actions.logout()),
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

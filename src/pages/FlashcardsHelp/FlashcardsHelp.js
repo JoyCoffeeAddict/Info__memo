@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import EmptyFlashcard from '../../components/UI/Flashcard/EmptyFlashcard/EmptyFlashcard';
 import Button from '../../components/UI/Button/Button';
 
 import classes from './FlashcardsHelp.module.scss';
-const FlashcardsHelp = ({isAuth = true}) => (
+const FlashcardsHelp = props => (
 	<div className={`LayoutContent`}>
 		<div className={classes.FlashcardsHelp}>
 			<div className={classes.FlashcardsHelpLeft}>
@@ -20,12 +21,11 @@ const FlashcardsHelp = ({isAuth = true}) => (
 					categorise your study subjects.
 				</p>
 			</div>
-			{/* <div className={classes.FlashcardsHelpRight}> */}
 
 			<span className={classes.FlashcardWrapper}>
 				<EmptyFlashcard whiteText="perro" greyText="dog" />
 			</span>
-			{isAuth ? (
+			{props.token ? (
 				<Link to="/flashcards" className={classes.FlashcardsHelpLink}>
 					<Button additionalStyles={classes.FlashcardsHelpButton}>STUDY</Button>
 				</Link>
@@ -34,9 +34,14 @@ const FlashcardsHelp = ({isAuth = true}) => (
 					First, you have to log in
 				</Button>
 			)}
-			{/* </div> */}
 		</div>
 	</div>
 );
 
-export default FlashcardsHelp;
+const mapStateToProps = state => {
+	return {
+		token: state.auth.token,
+	};
+};
+
+export default connect(mapStateToProps)(FlashcardsHelp);

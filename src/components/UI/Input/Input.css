@@ -1,29 +1,32 @@
 .InputWrapper {
 	position: relative;
+	display: grid;
+}
+.Label {
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
 }
 
 .Input {
+	grid-row: 2 / 3;
 	font-size: 1rem;
 	line-height: 100%;
 	padding: 0;
 	border: 0;
 	border-bottom: 1px solid black;
-
 	color: black;
 	background-color: #fff;
 	width: 100%;
 }
 
 .LabelDescription {
+	grid-row: 1 / 2;
 	color: #000;
 	background-color: transparent;
 	opacity: 1;
-	position: absolute;
-	top: 0;
-	left: 0;
 	pointer-events: none;
-	transform: translateY(-30px);
-	transition: 0.2s;
+	transform: translateY(0);
+	transition: transform 0.2s;
 }
 
 .Input::placeholder {
@@ -31,15 +34,15 @@
 }
 
 .Input:placeholder-shown ~ .LabelDescription {
-	transform: translateY(0);
+	transform: translateY(1rem);
 }
 
 .Input:focus ~ .LabelDescription {
-	transform: translateY(-30px);
+	transform: translateY(0);
 }
 .InvalidResponse {
 	line-height: 150%;
 	font-size: 0.75rem;
-
+	height: 0.75rem;
 	/* color: #cc0000; */
 }

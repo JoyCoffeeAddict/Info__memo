@@ -1,29 +1,19 @@
 import React from 'react';
 import './Input.css';
-const Input = ({
-	inputValue,
-	setValue,
-	labelDescription,
-	invalidResponse,
-	isInputCorrect,
-	inputType,
-	isRequired,
-}) => (
+const Input = ({inputValue, setValue, labelDescription, invalidResponse, isInputCorrect, inputType, isRequired}) => (
 	<div className="InputWrapper">
-		<label>
+		<label className="Label">
 			<input
 				className="Input"
 				type={inputType}
-				placeholder=""
+				placeholder="name"
 				value={inputValue}
 				onChange={setValue}
 				required={isRequired}
 			/>
 			<span className="LabelDescription">{labelDescription}</span>
 		</label>
-		{!isInputCorrect && inputValue !== '' && (
-			<span className="InvalidResponse">{invalidResponse}</span>
-		)}
+		<span className="InvalidResponse">{!isInputCorrect && inputValue !== '' ? invalidResponse : ''}</span>
 	</div>
 );
 
