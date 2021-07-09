@@ -11,14 +11,11 @@ import FlashcardControlsButtons from './FlashcardControlsButtons/FlashcardContro
 
 const FlashcardsEditDecks = ({
 	flashcardsDecks,
-	token,
-	localId,
 	onAddDeck,
 	onDeleteDeck,
 	onPushingCards,
 	onDeleteCard,
 	onSaveFlashcardsDataToDB,
-	onRetriveFlashcardsData,
 }) => {
 	const [deckInputValue, setDeckInputValue] = useState('');
 	const [activeDeckName, setActiveDeckName] = useState('');
@@ -44,9 +41,7 @@ const FlashcardsEditDecks = ({
 		setDecksArray(tempDecksArray);
 
 		//TODO: save data somewhere else
-		// return () => {
-		// 	onSaveFlashcardsDataToDB();
-		// };
+		//DONE: added a button for saving data
 	}, [flashcardsDecks]);
 
 	//update State, and dependent UI when new Active Deck is chosen
@@ -260,8 +255,6 @@ const FlashcardsEditDecks = ({
 const mapStateToProps = state => {
 	return {
 		flashcardsDecks: state.flashcardsDecks,
-		token: state.auth.token,
-		localId: state.auth.localId,
 	};
 };
 const mapDispatchToProps = dispatch => {

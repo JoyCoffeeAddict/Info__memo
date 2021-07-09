@@ -1,0 +1,55 @@
+@use '../../scss/sizes.scss' as *;
+
+.FlashcardsStudyingLeft {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	min-height: 30vh;
+	order: 1;
+}
+.ControlButtons {
+	display: flex;
+	justify-content: space-evenly;
+}
+.SmButton {
+	width: 5rem;
+	height: 5rem;
+}
+
+.FlashcardsStudyingRight {
+	align-self: center;
+}
+.ControlButtonsLarge {
+	display: none;
+}
+
+.Points {
+	display: block;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 2rem;
+	line-height: 2rem;
+	padding: 1rem 0;
+}
+
+@include for-tablet-landscape-up {
+	.FlashcardsStudying {
+		width: clamp(56rem, 70%, 90rem);
+	}
+
+	.FlashcardsStudyingLeft {
+		order: 0;
+	}
+	.ControlButtonsLarge {
+		grid-row: 1 / 2;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+	}
+	.ControlButtons,
+	.PointsSmall {
+		display: none;
+	}
+}

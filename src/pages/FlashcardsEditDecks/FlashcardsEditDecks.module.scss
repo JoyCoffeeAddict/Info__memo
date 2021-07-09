@@ -6,8 +6,6 @@
 	grid-template-columns: 1fr;
 	grid-template-rows: 12fr 10fr 2fr;
 	width: clamp(20rem, 100%, 40rem);
-	margin-right: auto;
-	margin-left: auto;
 
 	@include for-tablet-landscape-up {
 		row-gap: 0;
