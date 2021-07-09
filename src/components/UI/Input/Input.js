@@ -1,6 +1,15 @@
 import React from 'react';
 import './Input.css';
-const Input = ({inputValue, setValue, labelDescription, invalidResponse, isInputCorrect, inputType, isRequired}) => (
+const Input = ({
+	inputValue,
+	setValue,
+	labelDescription,
+	invalidResponse,
+	isInputCorrect,
+	inputType,
+	isRequired,
+	pressedEnter,
+}) => (
 	<div className="InputWrapper">
 		<label className="Label">
 			<input
@@ -10,6 +19,8 @@ const Input = ({inputValue, setValue, labelDescription, invalidResponse, isInput
 				value={inputValue}
 				onChange={setValue}
 				required={isRequired}
+				// For 'Enter' only
+				onKeyPress={pressedEnter}
 			/>
 			<span className="LabelDescription">{labelDescription}</span>
 		</label>

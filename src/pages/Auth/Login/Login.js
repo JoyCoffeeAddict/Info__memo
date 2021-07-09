@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useMemo} from 'react';
+import React, {useState, useMemo} from 'react';
 import {connect} from 'react-redux';
 import {checkValidity} from '../../../shared/checkValidity';
 import {emailRules, passwordRules} from '../../../shared/dataRules';

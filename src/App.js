@@ -6,18 +6,21 @@ import * as actions from './store/actions/actions';
 import Layout from './components/Layout/Layout';
 import Main from './pages/Main/Main';
 import FlashcardsHelp from './pages/FlashcardsHelp/FlashcardsHelp';
+import FlashcardsEditDecks from './pages/FlashcardsEditDecks/FlashcardsEditDecks';
 import Flashcards from './pages/Flashcards/Flashcards';
 import Register from './pages/Auth/Register/Register';
 import Login from './pages/Auth/Login/Login';
 const App = props => {
 	useEffect(() => {
 		props.onAutoSignIn();
+		// eslint-disable-next-line
 	}, []);
 
 	let routes = (
 		<Switch>
 			<Route path="/" exact component={Main} />
 			<Route path="/flashcards-help" exact component={FlashcardsHelp} />
+			<Route path="/flashcards-edit-decks" exact component={FlashcardsEditDecks} />
 			<Route path="/flashcards" exact component={Flashcards} />
 			<Route path="/register" exact component={Register} />
 			<Route path="/log-in" exact component={Login} />

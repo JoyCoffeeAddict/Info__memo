@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useMemo} from 'react';
+import React, {useState, useMemo} from 'react';
 import {connect} from 'react-redux';
 import {checkValidity} from '../../../shared/checkValidity';
 import {nameRules, emailRules, passwordRules} from '../../../shared/dataRules';
@@ -19,7 +19,6 @@ const Register = props => {
 
 	const submitHandler = event => {
 		event.preventDefault();
-		console.log('submit handler');
 		if (isNameCorrect && isPasswordCorrect && isEmailCorrect) {
 			//Register request
 			//isSignup is equal to false, since user is not signed up yet.

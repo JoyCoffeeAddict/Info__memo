@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-import {signinLink, signupLink, updateProfileLink} from '../../shared/endpoints';
+import {signinLink, signupLink, updateProfileLink, flashcardsDecksLink} from '../../shared/endpoints';
 
 //AUTH
 const authStart = () => {
@@ -50,11 +50,24 @@ const authChangeUserProfile = (token, name) => {
 	axios.post(updateProfileLink, {idToken: token, displayName: name});
 };
 
-/* Register or login
- * the logic is exactly the same, the only difference is url
- *
- *
- */
+export const retrieveFlashcardsData = () => async (dispatch, getState) => {
+	console.log('retriveData');
+	const state = getState();
+	let decks = await axios
+		.get(`${flashcardsDecksLink}/${state.auth.localId}.json?auth=${state.auth.token}`)
+		.then(({data}) => {
+			// console.log(data);
+
+			return data;
+		})
+		.catch(err => console.log(err));
+
+	dispatch({
+		type: actionTypes.RETRIEVE_FLASHCARDS_DATA,
+		decks: decks,
+	});
+};
+
 export const auth = (email, password, isSignup, name = '') => {
 	return dispatch => {
 		dispatch(authStart());
@@ -80,6 +93,7 @@ export const auth = (email, password, isSignup, name = '') => {
 				localStorage.setItem('localId', localId);
 				localStorage.setItem('name', name);
 				dispatch(authSuccess(idToken, localId));
+				dispatch(retrieveFlashcardsData());
 				dispatch(handleAuthTimeout(expiresIn));
 				if (name && name.trim() !== '') {
 					authChangeUserProfile(idToken, name);
@@ -105,7 +119,54 @@ export const autoSignIn = dispatch => {
 			//here will be sth about user Name
 			//const name = localStorage.getItem('name');
 			dispatch(authSuccess(token, localId));
+			dispatch(retrieveFlashcardsData());
 		}
 	}
 	dispatch({type: actionTypes.AUTO_SIGN_IN});
+};
+
+// Flashcards
+export const addDeck = deckName => {
+	return {
+		type: actionTypes.ADD_DECK,
+		newDeck: deckName,
+	};
+};
+
+export const deleteDeck = deckName => {
+	return {
+		type: actionTypes.DELETE_DECK,
+		deckToDelete: deckName,
+	};
+};
+
+export const pushCards = (deckName, cardsArray) => {
+	return {
+		type: actionTypes.PUSH_CARDS,
+		deckToModify: deckName,
+		cardsArray: cardsArray,
+	};
+};
+
+export const deleteCard = (deckName, cardNumber) => {
+	return {
+		type: actionTypes.DELETE_CARD,
+		deckToModify: deckName,
+		cardToDelete: cardNumber,
+	};
+};
+
+export const saveFlashcardsDataToDB = async (dispatch, getState) => {
+	const state = getState();
+
+	axios
+		.put(`${flashcardsDecksLink}/${state.auth.localId}.json?auth=${state.auth.token}`, {
+			...state.flashcardsDecks,
+		})
+
+		.catch(error => console.log(error));
+
+	dispatch({
+		type: actionTypes.SAVE_DATA_TO_DB,
+	});
 };

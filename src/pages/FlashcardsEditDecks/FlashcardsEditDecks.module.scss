@@ -1,0 +1,176 @@
+@import '../../scss/colors.scss';
+@import '../../scss/sizes.scss';
+
+.FlashcardsEditDecks {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 12fr 10fr 2fr;
+	width: clamp(20rem, 100%, 40rem);
+	margin-right: auto;
+	margin-left: auto;
+
+	@include for-tablet-landscape-up {
+		row-gap: 0;
+		column-gap: 3rem;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 9fr 1fr;
+		width: clamp(56rem, 70%, 90rem);
+	}
+}
+
+.Decks {
+	@include for-tablet-landscape-up {
+		grid-row: 1 / 3;
+		grid-column: 1 / 2;
+	}
+	display: grid;
+	grid-template-rows: 7fr 70fr 10fr;
+	height: 100%;
+	border: 1px solid black;
+}
+
+.YourDecks {
+	grid-row: 1 / 2;
+
+	align-self: center;
+	text-align: center;
+	padding: 0.5rem 0.75rem;
+	line-height: 100%;
+}
+
+.DeckList {
+	grid-row: 2 / 3;
+
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+
+	overflow-y: scroll;
+}
+
+.AddDeckLabel {
+	grid-row: 3 / 4;
+
+	display: grid;
+	grid-template-rows: 2fr 3fr;
+	width: 100%;
+	color: #575757;
+}
+
+.AddDeckText {
+	grid-row: 1 /2;
+	align-self: center;
+	text-decoration: none;
+	font-style: normal;
+	display: block;
+	width: 100%;
+	line-height: 2rem;
+	background-color: white;
+}
+
+.AddDeckText::before {
+	content: '+';
+	font-size: inherit;
+	line-height: inherit;
+	font-weight: 900;
+	padding: 0.25rem;
+	background-color: transparent;
+}
+
+.AddDeckInput {
+	grid-row: 2 / 3;
+	padding: 0;
+	width: 100%;
+	border: 0;
+	border-top: 1px solid black;
+
+	border-radius: 0;
+	line-height: 1.5rem;
+}
+
+.AddDeckInput:focus {
+	outline: 2px solid $color-primary;
+	border: none;
+}
+
+.FlashcardWrapper {
+	@include for-tablet-landscape-up {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
+	align-self: center;
+}
+
+.FlashcardControls {
+	@include for-tablet-landscape-up {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+	}
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+.AddCardsModal {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+.AddCardsTitle {
+	font-size: 1.5rem;
+	line-height: 300%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	text-align: center;
+}
+.AddCardsList {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.CardItem {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding: 0.25rem 0;
+	border-bottom: 1px solid black;
+}
+
+.CardItemText {
+	display: block;
+	width: 50%;
+}
+
+.AddCardsInput {
+	display: flex;
+	position: relative;
+	margin-top: 2rem;
+	column-gap: 2rem;
+}
+.AddCardsInput > div {
+	width: 50%;
+}
+
+.AddCardsInput .AddCardButton {
+	position: absolute;
+	right: 0;
+	display: block;
+	padding: 4px;
+	font-weight: 900;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.AddCardButton:hover {
+	color: #5b7352;
+}
+
+.AddCardsArray {
+	//width taken from design
+	// wtf is that?
+	width: 480 / (720 - 144) * 100%;
+	padding-bottom: 40px;
+}
