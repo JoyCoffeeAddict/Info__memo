@@ -7,6 +7,7 @@ import Layout from './components/Layout/Layout';
 import Main from './pages/Main/Main';
 import Flashcards from './pages/Flashcards/Flashcards';
 import FlashcardsHelp from './pages/FlashcardsHelp/FlashcardsHelp';
+import QuestionsHelp from './pages/QuestionsHelp/QuestionsHelp';
 import FlashcardsEditDecks from './pages/FlashcardsEditDecks/FlashcardsEditDecks';
 import FlashcardsStudying from './pages/FlashcardsStudying/FlashcardsStudying';
 import Register from './pages/Auth/Register/Register';
@@ -24,6 +25,7 @@ const App = props => {
 			<Route path="/flashcards-help" exact component={FlashcardsHelp} />
 			<Route path="/flashcards-edit-decks" exact component={FlashcardsEditDecks} />
 			<Route path="/flashcards-studying" exact component={FlashcardsStudying} />
+			<Route path="/questions-help" exact component={QuestionsHelp} />
 
 			<Route path="/register" exact component={Register} />
 			<Route path="/log-in" exact component={Login} />

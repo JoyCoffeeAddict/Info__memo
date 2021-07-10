@@ -1,0 +1,47 @@
+.QuestionsListItem {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-auto-flow: column;
+	justify-items: flex-end;
+	text-align: center;
+	font-size: 1.5rem;
+	padding: 0.5rem 1rem;
+	border-bottom: 1px solid black;
+}
+
+.DeleteList {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 0.5rem;
+	margin: -0.5rem 0;
+}
+.DeleteList > .default {
+	font-size: 1.5rem;
+	text-align: center;
+	z-index: 20;
+	transition: opacity 0.2s linear, transform 0.2s;
+}
+
+/* I've tried to create more readable solution, 
+but this is at least optimized*/
+.DeleteList > .active {
+	position: absolute;
+	color: #f00;
+	padding: inherit;
+	opacity: 0;
+	z-index: 10;
+	transition: opacity 0.2s linear;
+	width: 100%;
+	height: 100%;
+}
+
+.DeleteList:hover > .active {
+	opacity: 1;
+}
+
+.DeleteList:hover > .default {
+	opacity: 0;
+}

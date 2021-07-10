@@ -1,0 +1,80 @@
+@use '../../scss/sizes' as *;
+@use '../../scss/colors' as *;
+
+.QuestionsHelp {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+	width: clamp(20rem, 100%, 40rem);
+
+	@include for-tablet-landscape-up {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 1fr;
+		width: clamp(56rem, 70%, 90rem);
+		align-items: center;
+	}
+}
+.QuestionsHelpRight {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.QuestionsHelpRight > svg {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+}
+.InsideModal {
+	display: grid;
+	height: 100%;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 7fr;
+}
+
+.QuestionsList {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-flow: row;
+	align-items: start;
+	align-content: start;
+	overflow-y: auto;
+}
+// .QuestionsListItem {
+// 	text-align: center;
+// 	font-size: 1.5rem;
+// 	padding: 0.5rem 1rem;
+// 	border-bottom: 1px solid black;
+// }
+.createListWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.CreateList {
+	white-space: nowrap;
+	border: 1px solid black;
+	border-right: none;
+	padding: 0.5rem;
+}
+.CreateList::before {
+	content: '+';
+	font-size: inherit;
+	line-height: inherit;
+	font-weight: 900;
+	padding: 0.25rem;
+	background-color: transparent;
+}
+
+.CreateListInput {
+	padding: 0.5rem;
+	width: 100%;
+	border: 0;
+	border: 1px solid black;
+
+	border-radius: 0;
+	line-height: 1.5rem;
+}
+
+.CreateListInput:focus {
+	outline: 2px solid $color-primary;
+	// border: none;
+}

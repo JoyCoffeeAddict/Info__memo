@@ -10,12 +10,14 @@ import classes from './FlashcardsEditDecks.module.scss';
 import FlashcardControlsButtons from './FlashcardControlsButtons/FlashcardControlsButtons';
 
 const FlashcardsEditDecks = ({
+	isAuth,
 	flashcardsDecks,
 	onAddDeck,
 	onDeleteDeck,
 	onPushingCards,
 	onDeleteCard,
 	onSaveFlashcardsDataToDB,
+	onRetriveFlashcardsData,
 }) => {
 	const [deckInputValue, setDeckInputValue] = useState('');
 	const [activeDeckName, setActiveDeckName] = useState('');
@@ -31,8 +33,19 @@ const FlashcardsEditDecks = ({
 	const [decksArray, setDecksArray] = useState([]);
 
 	useEffect(() => {
-		console.log('FlashcardEditDecks useEffect 1 ');
-		if (!flashcardsDecks || Object.keys(flashcardsDecks).length === 0) return;
+		if (isAuth) {
+			onRetriveFlashcardsData();
+		}
+	}, [onRetriveFlashcardsData, isAuth]);
+
+	useEffect(() => {
+		if (!flashcardsDecks) return;
+		if (Object.keys(flashcardsDecks).length === 0) return;
+		// If logic array's length is equal to ui array's length then there is no change in decks list
+		// it means that user did add or delete a card, but not the deck
+		// it means that deck list on the left side does not need an update
+		if (Object.keys(flashcardsDecks).length === decksArray.length) return;
+
 		let tempDecksArray = [];
 		for (let key in flashcardsDecks) {
 			tempDecksArray.push({name: key, isActive: false});
@@ -42,7 +55,7 @@ const FlashcardsEditDecks = ({
 
 		//TODO: save data somewhere else
 		//DONE: added a button for saving data
-	}, [flashcardsDecks]);
+	}, [flashcardsDecks, onRetriveFlashcardsData]);
 
 	//update State, and dependent UI when new Active Deck is chosen
 	useEffect(() => {
@@ -77,25 +90,25 @@ const FlashcardsEditDecks = ({
 
 	// HELPERS FOR ADDING AND DELETING A DECK
 
-	const addDeckHelper = () => {
-		let tempDecksArray = [...decksArray];
-		onAddDeck(deckInputValue);
-		tempDecksArray.push({name: deckInputValue, isActive: false});
-		setDecksArray(tempDecksArray);
-		setDeckInputValue('');
-	};
+	// const addDeckHelper = () => {
+	// 	// let tempDecksArray = [...decksArray];
+	// 	// tempDecksArray.push({name: deckInputValue, isActive: false});
+	// 	// setDecksArray(tempDecksArray);
+	// };
 
 	const AddNewDeckHandler = event => {
 		if (deckInputValue.trim() === '' || flashcardsDecks[deckInputValue]) return;
-		addDeckHelper();
+		// addDeckHelper();
+		onAddDeck(deckInputValue);
+		setDeckInputValue('');
 	};
 
 	const DeleteDeckHandler = deckName => {
 		if (!flashcardsDecks[deckName]) return;
-		let tempDecksArray = [...decksArray];
-		let deckToDeleteIndex = tempDecksArray.findIndex(tempDeck => tempDeck.name === deckName);
-		tempDecksArray.splice(deckToDeleteIndex, 1);
-		setDecksArray(tempDecksArray);
+		// let tempDecksArray = [...decksArray];
+		// let deckToDeleteIndex = tempDecksArray.findIndex(tempDeck => tempDeck.name === deckName);
+		// tempDecksArray.splice(deckToDeleteIndex, 1);
+		// setDecksArray(tempDecksArray);
 		onDeleteDeck(deckName);
 		if (deckName === activeDeckName) setActiveDeckName('');
 	};
@@ -122,7 +135,6 @@ const FlashcardsEditDecks = ({
 	};
 
 	//CONTROL BUTTONS SPECIFIC FUNCTIONS
-
 	const previousCardHandler = () => {
 		if (activeDeckName !== '' && flashcardsDecks[activeDeckName].length !== 0) {
 			let newCardNumber = cardNumber;
@@ -254,6 +266,7 @@ const FlashcardsEditDecks = ({
 
 const mapStateToProps = state => {
 	return {
+		isAuth: state.auth.token !== null,
 		flashcardsDecks: state.flashcardsDecks,
 	};
 };

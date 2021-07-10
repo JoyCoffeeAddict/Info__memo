@@ -50,24 +50,6 @@ const authChangeUserProfile = (token, name) => {
 	axios.post(updateProfileLink, {idToken: token, displayName: name});
 };
 
-export const retrieveFlashcardsData = () => async (dispatch, getState) => {
-	console.log('retriveData');
-	const state = getState();
-	let decks = await axios
-		.get(`${flashcardsDecksLink}/${state.auth.localId}.json?auth=${state.auth.token}`)
-		.then(({data}) => {
-			// console.log(data);
-
-			return data;
-		})
-		.catch(err => console.log(err));
-
-	dispatch({
-		type: actionTypes.RETRIEVE_FLASHCARDS_DATA,
-		decks: decks,
-	});
-};
-
 export const auth = (email, password, isSignup, name = '') => {
 	return dispatch => {
 		dispatch(authStart());
@@ -93,7 +75,7 @@ export const auth = (email, password, isSignup, name = '') => {
 				localStorage.setItem('localId', localId);
 				localStorage.setItem('name', name);
 				dispatch(authSuccess(idToken, localId));
-				dispatch(retrieveFlashcardsData());
+				// dispatch(retrieveFlashcardsData());
 				dispatch(handleAuthTimeout(expiresIn));
 				if (name && name.trim() !== '') {
 					authChangeUserProfile(idToken, name);
@@ -119,7 +101,7 @@ export const autoSignIn = dispatch => {
 			//here will be sth about user Name
 			//const name = localStorage.getItem('name');
 			dispatch(authSuccess(token, localId));
-			dispatch(retrieveFlashcardsData());
+			// dispatch(retrieveFlashcardsData());
 		}
 	}
 	dispatch({type: actionTypes.AUTO_SIGN_IN});
@@ -156,6 +138,25 @@ export const deleteCard = (deckName, cardNumber) => {
 	};
 };
 
+const retrieveFlashcardsDataThunk = () => async (dispatch, getState) => {
+	console.log('retriveData');
+	const state = getState();
+	let response;
+	try {
+		response = await axios.get(`${flashcardsDecksLink}/${state.auth.localId}.json?auth=${state.auth.token}`);
+		dispatch({
+			type: actionTypes.RETRIEVE_FLASHCARDS_DATA,
+			decks: response.data,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const retrieveFlashcardsData = dispatch => {
+	dispatch(retrieveFlashcardsDataThunk());
+};
+
 export const saveFlashcardsDataToDB = async (dispatch, getState) => {
 	const state = getState();
 
@@ -169,4 +170,17 @@ export const saveFlashcardsDataToDB = async (dispatch, getState) => {
 	dispatch({
 		type: actionTypes.SAVE_DATA_TO_DB,
 	});
+};
+
+export const addList = listName => {
+	return {
+		type: actionTypes.ADD_LIST,
+		listName,
+	};
+};
+export const deleteList = listName => {
+	return {
+		type: actionTypes.DELETE_LIST,
+		listName,
+	};
 };

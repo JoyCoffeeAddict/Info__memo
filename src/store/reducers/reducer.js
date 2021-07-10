@@ -20,6 +20,14 @@ const initialState = {
 			{front: 'comer', back: 'eat'},
 		],
 	},
+	questionsLists: {
+		physics: ['What is the unit of energy'],
+		astronomy: [
+			'How far away from Earth is Moon',
+			'How far away from Earth is Moon',
+			' What is the closest star to the Sun ',
+		],
+	},
 };
 
 const authStart = (state, action) => {
@@ -84,7 +92,7 @@ const deleteCard = (state, action) => {
 };
 
 const retrieveFlashcardsData = (state, action) => {
-	// console.log(state.auth.localId);
+	console.log(state.auth.localId);
 	if (action.decks) {
 		return {...state, flashcardsDecks: action.decks};
 	} else {
@@ -92,6 +100,15 @@ const retrieveFlashcardsData = (state, action) => {
 	}
 };
 
+const addList = (state, action) => {
+	const newQuestionsLists = {...state.questionsLists, [action.listName]: []};
+	return {...state, questionsLists: newQuestionsLists};
+};
+const deleteList = (state, action) => {
+	let newQuestionsLists = {...state.questionsLists};
+	delete newQuestionsLists[action.listName];
+	return {...state, questionsLists: newQuestionsLists};
+};
 const Reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.AUTH_START:
@@ -118,6 +135,10 @@ const Reducer = (state = initialState, action) => {
 			return pushCards(state, action);
 		case actionTypes.DELETE_CARD:
 			return deleteCard(state, action);
+		case actionTypes.ADD_LIST:
+			return addList(state, action);
+		case actionTypes.DELETE_LIST:
+			return deleteList(state, action);
 		default:
 			return state;
 	}

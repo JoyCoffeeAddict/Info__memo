@@ -15,7 +15,7 @@ const Input = ({
 			<input
 				className="Input"
 				type={inputType}
-				placeholder="name"
+				placeholder=""
 				value={inputValue}
 				onChange={setValue}
 				required={isRequired}

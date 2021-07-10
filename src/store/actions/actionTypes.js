@@ -10,3 +10,5 @@ export const PUSH_CARDS = 'PUSH_CARDS';
 export const DELETE_CARD = 'DELETE_CARD';
 export const RETRIEVE_FLASHCARDS_DATA = 'RETRIEVE_FLASHCARDS_DATA';
 export const SAVE_DATA_TO_DB = 'SAVE_DATA_TO_DB';
+export const ADD_LIST = 'ADD_LIST';
+export const DELETE_LIST = 'DELETE_LIST';
