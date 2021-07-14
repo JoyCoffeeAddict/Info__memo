@@ -23,9 +23,9 @@ const initialState = {
 	questionsLists: {
 		// physics: ['What is the unit of energy'],
 		astronomy: [
-			{questionText: 'How far away from Earth is Moon', color: questionColors.GREEN},
-			{questionText: 'How far away from Earth is Moon', color: questionColors.GREEN},
-			{questionText: ' What is the closest star to the Sun ', color: questionColors.GREEN},
+			{questionText: 'How far away from Earth is Moon', color: questionColors.WHITE},
+			{questionText: 'How far away from Earth is Moon', color: questionColors.WHITE},
+			{questionText: ' What is the closest star to the Sun ', color: questionColors.WHITE},
 		],
 	},
 };
