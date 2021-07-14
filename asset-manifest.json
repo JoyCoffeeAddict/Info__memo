@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/Info__memo/static/css/main.c42c66f0.chunk.css",
+    "main.js": "/Info__memo/static/js/main.6a4f2fb2.chunk.js",
+    "main.js.map": "/Info__memo/static/js/main.6a4f2fb2.chunk.js.map",
+    "runtime-main.js": "/Info__memo/static/js/runtime-main.2800e55f.js",
+    "runtime-main.js.map": "/Info__memo/static/js/runtime-main.2800e55f.js.map",
+    "static/css/2.a1fe7d26.chunk.css": "/Info__memo/static/css/2.a1fe7d26.chunk.css",
+    "static/js/2.2b1b1913.chunk.js": "/Info__memo/static/js/2.2b1b1913.chunk.js",
+    "static/js/2.2b1b1913.chunk.js.map": "/Info__memo/static/js/2.2b1b1913.chunk.js.map",
+    "index.html": "/Info__memo/index.html",
+    "static/css/2.a1fe7d26.chunk.css.map": "/Info__memo/static/css/2.a1fe7d26.chunk.css.map",
+    "static/css/main.c42c66f0.chunk.css.map": "/Info__memo/static/css/main.c42c66f0.chunk.css.map",
+    "static/js/2.2b1b1913.chunk.js.LICENSE.txt": "/Info__memo/static/js/2.2b1b1913.chunk.js.LICENSE.txt",
+    "static/media/Flashcards.d32365d6.svg": "/Info__memo/static/media/Flashcards.d32365d6.svg",
+    "static/media/Questions.6e90f648.svg": "/Info__memo/static/media/Questions.6e90f648.svg",
+    "static/media/QuestionsList.dddb0d8d.svg": "/Info__memo/static/media/QuestionsList.dddb0d8d.svg",
+    "static/media/Soon.08985bfe.svg": "/Info__memo/static/media/Soon.08985bfe.svg",
+    "static/media/SpacedRepetition.e011c260.svg": "/Info__memo/static/media/SpacedRepetition.e011c260.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2800e55f.js",
+    "static/css/2.a1fe7d26.chunk.css",
+    "static/js/2.2b1b1913.chunk.js",
+    "static/css/main.c42c66f0.chunk.css",
+    "static/js/main.6a4f2fb2.chunk.js"
+  ]
+}
