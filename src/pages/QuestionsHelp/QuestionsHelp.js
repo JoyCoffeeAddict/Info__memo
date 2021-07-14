@@ -27,7 +27,7 @@ const QuestionsHelp = ({
 
 	useEffect(() => {
 		if (isAuth) onRetrieveQuestionsData();
-	}, [isAuth]);
+	}, [isAuth, onRetrieveQuestionsData]);
 
 	useEffect(() => {
 		const tempQuestionListArray = [];

@@ -41,7 +41,7 @@ const FlashcardsEditDecks = ({
 	useEffect(() => {
 		if (!flashcardsDecks) return;
 		if (Object.keys(flashcardsDecks).length === 0) return;
-		// If logic array's length is equal to ui array's length then there is no change in decks list
+		// If logic array's length is equal to UI array's length then there is no change in decks list
 		// it means that user did add or delete a card, but not the deck
 		// it means that deck list on the left side does not need an update
 		if (Object.keys(flashcardsDecks).length === decksArray.length) return;
@@ -55,6 +55,7 @@ const FlashcardsEditDecks = ({
 
 		//TODO: save data somewhere else
 		//DONE: added a button for saving data
+		// eslint-disable-next-line
 	}, [flashcardsDecks]);
 
 	//update State, and dependent UI when new Active Deck is chosen

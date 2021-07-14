@@ -46,8 +46,8 @@ const FlashcardsStudying = ({
 		if (!listName) return;
 		if (!questionsLists) return;
 		if (listName.trim() === '') return;
-
 		const tempQuestionsList = questionsLists[listName]?.map((question, index) => {
+			// eslint-disable-next-line
 			if (question.questionText.trim() === '') return;
 			return (
 				<QuestionItem
