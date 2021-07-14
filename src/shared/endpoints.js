@@ -6,3 +6,4 @@ export const updateProfileLink = `https://identitytoolkit.googleapis.com/v1/acco
 export const lookUpProfileLink = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`;
 
 export const flashcardsDecksLink = `https://info-memo2-default-rtdb.europe-west1.firebasedatabase.app/Flashcards`;
+export const questionsListsLink = `https://info-memo2-default-rtdb.europe-west1.firebasedatabase.app/Questions`;

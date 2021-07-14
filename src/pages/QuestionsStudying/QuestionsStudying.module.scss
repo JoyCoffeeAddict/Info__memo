@@ -1,0 +1,31 @@
+@use '../../scss/sizes.scss' as *;
+@use '../../scss/colors.scss' as *;
+.QuestionsStudying {
+	width: 100%;
+	min-height: 100vh - $navbar-height - $footer-height;
+	margin-top: $navbar-height;
+
+	padding: 1rem;
+}
+.AddQuestionWrapper {
+	button {
+		border-radius: 0;
+	}
+	.SaveButton {
+		font-size: 2rem;
+	}
+	@include for-tablet-landscape-up {
+		display: grid;
+		grid-template-columns: 1fr 3fr 1fr;
+		grid-template-rows: 1fr;
+		font-size: 1.5rem;
+		gap: 2rem;
+	}
+}
+.AddQuestionInput {
+	font-size: 1.25rem;
+	width: 100%;
+}
+.AddQuestionInput:focus {
+	outline: 1px solid $color-primary;
+}

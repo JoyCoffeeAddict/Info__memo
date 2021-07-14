@@ -1,0 +1,45 @@
+@use '../../../scss/colors' as *;
+
+.Question {
+	display: grid;
+
+	grid-template-columns: 1fr auto;
+
+	padding: 0.25rem;
+	border: 1px solid black;
+	border-top: none;
+	&:first-of-type {
+		border-top: 1px solid black;
+	}
+}
+.ControlButtons {
+	display: flex;
+	gap: 1rem;
+	flex-direction: row;
+	padding-left: 3rem;
+	opacity: 0;
+	transition: opacity 0.3s linear;
+}
+.ControlButtons:hover {
+	opacity: 1;
+	transition: opacity 0.3s linear;
+}
+.Color {
+	display: inline-block;
+	height: 1.5rem;
+	width: 1.5rem;
+	border: 2px solid black;
+	border-radius: 50%;
+}
+.ColorGreen {
+	background-color: $accent-green;
+}
+.ColorOrange {
+	background-color: $accent-orange;
+}
+.ColorRed {
+	background-color: $accent-red;
+}
+.DeleteQuestion {
+	font-size: 1.5rem;
+}

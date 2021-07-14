@@ -12,6 +12,7 @@ import FlashcardsEditDecks from './pages/FlashcardsEditDecks/FlashcardsEditDecks
 import FlashcardsStudying from './pages/FlashcardsStudying/FlashcardsStudying';
 import Register from './pages/Auth/Register/Register';
 import Login from './pages/Auth/Login/Login';
+import QuestionsStudying from './pages/QuestionsStudying/QuestionsStudying';
 const App = props => {
 	useEffect(() => {
 		props.onAutoSignIn();
@@ -26,6 +27,7 @@ const App = props => {
 			<Route path="/flashcards-edit-decks" exact component={FlashcardsEditDecks} />
 			<Route path="/flashcards-studying" exact component={FlashcardsStudying} />
 			<Route path="/questions-help" exact component={QuestionsHelp} />
+			<Route path="/questions-studying" exact component={QuestionsStudying} />
 
 			<Route path="/register" exact component={Register} />
 			<Route path="/log-in" exact component={Login} />

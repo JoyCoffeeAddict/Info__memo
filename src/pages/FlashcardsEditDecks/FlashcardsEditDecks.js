@@ -17,7 +17,7 @@ const FlashcardsEditDecks = ({
 	onPushingCards,
 	onDeleteCard,
 	onSaveFlashcardsDataToDB,
-	onRetriveFlashcardsData,
+	onRetrieveFlashcardsData,
 }) => {
 	const [deckInputValue, setDeckInputValue] = useState('');
 	const [activeDeckName, setActiveDeckName] = useState('');
@@ -34,9 +34,9 @@ const FlashcardsEditDecks = ({
 
 	useEffect(() => {
 		if (isAuth) {
-			onRetriveFlashcardsData();
+			onRetrieveFlashcardsData();
 		}
-	}, [onRetriveFlashcardsData, isAuth]);
+	}, [onRetrieveFlashcardsData, isAuth]);
 
 	useEffect(() => {
 		if (!flashcardsDecks) return;
@@ -55,7 +55,7 @@ const FlashcardsEditDecks = ({
 
 		//TODO: save data somewhere else
 		//DONE: added a button for saving data
-	}, [flashcardsDecks, onRetriveFlashcardsData]);
+	}, [flashcardsDecks]);
 
 	//update State, and dependent UI when new Active Deck is chosen
 	useEffect(() => {
@@ -277,7 +277,7 @@ const mapDispatchToProps = dispatch => {
 		onPushingCards: (deckName, cardsArray) => dispatch(actions.pushCards(deckName, cardsArray)),
 		onDeleteCard: (deckName, cardNumber) => dispatch(actions.deleteCard(deckName, cardNumber)),
 		onSaveFlashcardsDataToDB: () => dispatch(actions.saveFlashcardsDataToDB),
-		onRetriveFlashcardsData: () => dispatch(actions.retrieveFlashcardsData),
+		onRetrieveFlashcardsData: () => dispatch(actions.retrieveFlashcardsData),
 	};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(FlashcardsEditDecks);

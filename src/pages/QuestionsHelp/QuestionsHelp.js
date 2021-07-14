@@ -11,11 +11,24 @@ import ListItem from './ListItem/ListItem';
 import classes from './QuestionsHelp.module.scss';
 
 import * as actions from '../../store/actions/actions';
+import ModalList from '../../components/UI/Modal/ModalList/ModalList';
 
-const QuestionsHelp = ({isAuth, questionsLists, onAddList, onDeleteList}) => {
+const QuestionsHelp = ({
+	isAuth,
+	questionsLists,
+	onAddList,
+	onDeleteList,
+	onSaveQuestionsDataToDB,
+	onRetrieveQuestionsData,
+}) => {
 	const [isChoosingList, setIsChoosingList] = useState(false);
 	const [questionsListsArray, setQuestionsListsArray] = useState([]);
 	const [newListInput, setNewListInput] = useState('');
+
+	useEffect(() => {
+		if (isAuth) onRetrieveQuestionsData();
+	}, [isAuth]);
+
 	useEffect(() => {
 		const tempQuestionListArray = [];
 
@@ -31,8 +44,9 @@ const QuestionsHelp = ({isAuth, questionsLists, onAddList, onDeleteList}) => {
 		// console.log('handler2');
 		// console.log(tempQuestionListArray);
 		// tempQuestionListArray.push(newListInput);
-		onAddList(newListInput);
 		// setQuestionsListsArray(tempQuestionListArray);
+		onAddList(newListInput);
+		onSaveQuestionsDataToDB();
 		setNewListInput('');
 	};
 
@@ -72,7 +86,11 @@ const QuestionsHelp = ({isAuth, questionsLists, onAddList, onDeleteList}) => {
 				<div className={classes.QuestionsHelpRight}>
 					{/* <QuestionsHelpList /> */}
 					<QuestionsList />
-					<Button clicked={() => setIsChoosingList(state => !state)}>STUDY</Button>
+					{isAuth ? (
+						<Button clicked={() => setIsChoosingList(state => !state)}>STUDY</Button>
+					) : (
+						<Button ButtonType="NotActive">First, you have to log in</Button>
+					)}
 				</div>
 			</div>
 			<Modal
@@ -94,7 +112,11 @@ const QuestionsHelp = ({isAuth, questionsLists, onAddList, onDeleteList}) => {
 							}}
 						/>
 					</div>
-					<div className={classes.QuestionsList}>{questionList}</div>
+					<ModalList>
+						{/* <div className={classes.QuestionsList}>
+						</div> */}
+						{questionList}
+					</ModalList>
 				</div>
 			</Modal>
 		</>
@@ -111,8 +133,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onAddList: listName => dispatch(actions.addList(listName)),
 		onDeleteList: listName => dispatch(actions.deleteList(listName)),
-
-		//onRetrieveData: () => dispatch(actions.retrieveAsyncData),
+		onSaveQuestionsDataToDB: () => dispatch(actions.saveQuestionsDataToDB),
+		onRetrieveQuestionsData: () => dispatch(actions.retrieveQuestionsData),
 	};
 };
 

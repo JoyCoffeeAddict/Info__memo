@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-
+import * as questionColors from '../../shared/questionColors';
 const initialState = {
 	auth: {
 		token: null,
@@ -21,11 +21,11 @@ const initialState = {
 		],
 	},
 	questionsLists: {
-		physics: ['What is the unit of energy'],
+		// physics: ['What is the unit of energy'],
 		astronomy: [
-			'How far away from Earth is Moon',
-			'How far away from Earth is Moon',
-			' What is the closest star to the Sun ',
+			{questionText: 'How far away from Earth is Moon', color: questionColors.GREEN},
+			{questionText: 'How far away from Earth is Moon', color: questionColors.GREEN},
+			{questionText: ' What is the closest star to the Sun ', color: questionColors.GREEN},
 		],
 	},
 };
@@ -72,8 +72,10 @@ const deleteDeck = (state, action) => {
 
 const pushCards = (state, action) => {
 	let newFlashcardDecks = {...state.flashcardsDecks};
-	let deckToChange = newFlashcardDecks[action.deckToModify];
+	let deckToChange = [...newFlashcardDecks[action.deckToModify]];
 	deckToChange.push(...action.cardsArray);
+	newFlashcardDecks[action.deckToModify] = deckToChange;
+
 	return {
 		...state,
 		flashcardsDecks: newFlashcardDecks,
@@ -92,23 +94,62 @@ const deleteCard = (state, action) => {
 };
 
 const retrieveFlashcardsData = (state, action) => {
-	console.log(state.auth.localId);
+	// console.log(state.auth.localId);
 	if (action.decks) {
 		return {...state, flashcardsDecks: action.decks};
 	} else {
 		return {...state, flashcardsDecks: initialState.flashcardsDecks};
 	}
 };
-
+const retrieveQuestionsData = (state, action) => {
+	if (action.lists) {
+		return {...state, questionsLists: action.lists};
+	} else {
+		return {...state, questionsLists: initialState.questionsLists};
+	}
+};
 const addList = (state, action) => {
-	const newQuestionsLists = {...state.questionsLists, [action.listName]: []};
+	const newQuestionsLists = {
+		...state.questionsLists,
+		[action.listName]: [{questionText: '', color: questionColors.WHITE}],
+	};
 	return {...state, questionsLists: newQuestionsLists};
 };
+
 const deleteList = (state, action) => {
 	let newQuestionsLists = {...state.questionsLists};
 	delete newQuestionsLists[action.listName];
 	return {...state, questionsLists: newQuestionsLists};
 };
+
+const addQuestion = (state, action) => {
+	let newQuestionsLists = {...state.questionsLists};
+	let listToChange = [...newQuestionsLists[action.listName]];
+	listToChange.unshift(action.question);
+	newQuestionsLists[action.listName] = listToChange;
+	return {
+		...state,
+		questionsLists: newQuestionsLists,
+	};
+};
+
+const changeColor = (state, action) => {
+	let newQuestionsLists = {...state.questionsLists};
+	let tempNewList = [...state.questionsLists[action.listName]];
+	tempNewList[action.id].color = action.color;
+	newQuestionsLists[action.listName] = tempNewList;
+	return {...state, questionsLists: newQuestionsLists};
+};
+
+const deleteQuestion = (state, action) => {
+	let newQuestionsLists = {...state.questionsLists};
+	let tempNewList = [...state.questionsLists[action.listName]];
+
+	tempNewList.splice(action.id, 1);
+	newQuestionsLists[action.listName] = tempNewList;
+	return {...state, questionsLists: newQuestionsLists};
+};
+
 const Reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.AUTH_START:
@@ -123,7 +164,7 @@ const Reducer = (state = initialState, action) => {
 			return authSetName(state, action);
 		case actionTypes.AUTO_SIGN_IN:
 			return state;
-		case actionTypes.SAVE_DATA_TO_DB:
+		case actionTypes.SAVE_FLASHCARDS_DATA_TO_DB:
 			return state;
 		case actionTypes.RETRIEVE_FLASHCARDS_DATA:
 			return retrieveFlashcardsData(state, action);
@@ -139,6 +180,16 @@ const Reducer = (state = initialState, action) => {
 			return addList(state, action);
 		case actionTypes.DELETE_LIST:
 			return deleteList(state, action);
+		case actionTypes.ADD_QUESTION:
+			return addQuestion(state, action);
+		case actionTypes.DELETE_QUESTION:
+			return deleteQuestion(state, action);
+		case actionTypes.CHANGE_COLOR:
+			return changeColor(state, action);
+		case actionTypes.SAVE_QUESTIONS_DATA_TO_DB:
+			return state;
+		case actionTypes.RETRIEVE_QUESTIONS_DATA:
+			return retrieveQuestionsData(state, action);
 		default:
 			return state;
 	}

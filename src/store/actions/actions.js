@@ -1,7 +1,13 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-import {signinLink, signupLink, updateProfileLink, flashcardsDecksLink} from '../../shared/endpoints';
+import {
+	signinLink,
+	signupLink,
+	updateProfileLink,
+	flashcardsDecksLink,
+	questionsListsLink,
+} from '../../shared/endpoints';
 
 //AUTH
 const authStart = () => {
@@ -168,7 +174,7 @@ export const saveFlashcardsDataToDB = async (dispatch, getState) => {
 		.catch(error => console.log(error));
 
 	dispatch({
-		type: actionTypes.SAVE_DATA_TO_DB,
+		type: actionTypes.SAVE_FLASHCARDS_DATA_TO_DB,
 	});
 };
 
@@ -183,4 +189,64 @@ export const deleteList = listName => {
 		type: actionTypes.DELETE_LIST,
 		listName,
 	};
+};
+export const addQuestion = (question, listName) => {
+	return {
+		type: actionTypes.ADD_QUESTION,
+		question,
+		listName,
+	};
+};
+
+export const changeColor = (listName, id, color) => {
+	console.log('Dispatched change color');
+	return {
+		type: actionTypes.CHANGE_COLOR,
+		listName,
+		id,
+		color,
+	};
+};
+
+export const deleteQuestion = (listName, id) => {
+	return {
+		type: actionTypes.DELETE_QUESTION,
+		listName,
+		id,
+	};
+};
+
+// INTENTIONALLY creating separate functions and break DRY function, for more control over retrieving and saving different data
+const retrieveQuestionsDataThunk = () => async (dispatch, getState) => {
+	console.log('retriveQuestionsData');
+	const state = getState();
+	let response;
+	try {
+		response = await axios.get(`${questionsListsLink}/${state.auth.localId}.json?auth=${state.auth.token}`);
+		dispatch({
+			type: actionTypes.RETRIEVE_QUESTIONS_DATA,
+			lists: response.data,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const retrieveQuestionsData = dispatch => {
+	dispatch(retrieveQuestionsDataThunk());
+};
+
+export const saveQuestionsDataToDB = async (dispatch, getState) => {
+	const state = getState();
+
+	axios
+		.put(`${questionsListsLink}/${state.auth.localId}.json?auth=${state.auth.token}`, {
+			...state.questionsLists,
+		})
+
+		.catch(error => console.log(error));
+
+	dispatch({
+		type: actionTypes.SAVE_QUESTIONS_DATA_TO_DB,
+	});
 };

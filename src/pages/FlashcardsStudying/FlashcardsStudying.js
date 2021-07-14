@@ -1,17 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMinus, faPen, faPlus} from '@fortawesome/free-solid-svg-icons';
 
+import * as actions from '../../store/actions/actions';
 import Button from '../../components/UI/Button/Button';
 import Flashcard from '../../components/UI/Flashcard/Flashcard';
 import classes from './FlashcardsStudying.module.scss';
-const FlashcardsStudying = ({location, flashcardsDecks}) => {
+const FlashcardsStudying = ({location, flashcardsDecks, isAuth, onRetrieveFlashcardsData}) => {
 	const [points, setPoints] = useState(0);
 	const [cardNumber, setCardNumber] = useState(0);
 	const [deckName, setDeckName] = useState('');
 	const [isItLastCard, setIsItLastCard] = useState(false);
+
+	useEffect(() => {
+		if (isAuth) {
+			onRetrieveFlashcardsData();
+		}
+	}, [onRetrieveFlashcardsData, isAuth]);
 
 	//prep states at component's mounting
 	useEffect(() => {
@@ -20,6 +27,33 @@ const FlashcardsStudying = ({location, flashcardsDecks}) => {
 		tempDeckName = tempDeckName.slice(1);
 		setDeckName(tempDeckName);
 	}, [location.search]);
+
+	let flashcard = useMemo(() => {
+		console.log(deckName, flashcardsDecks[deckName], cardNumber);
+		if (deckName === '') return <Flashcard front={''} back={''} />;
+		if (flashcardsDecks[deckName]) {
+			console.log('this should work');
+			return (
+				<Flashcard
+					front={flashcardsDecks[deckName][cardNumber].front}
+					back={flashcardsDecks[deckName][cardNumber].back}
+				/>
+			);
+		}
+	}, [deckName, cardNumber, flashcardsDecks]);
+	// useEffect(() => {
+	// 	console.log(deckName, flashcardsDecks[deckName], cardNumber);
+	// 	if (deckName === '') flashcard = <Flashcard front={''} back={''} />;
+	// 	if (flashcardsDecks[deckName]) {
+	// 		console.log('this should work');
+	// 		flashcard = (
+	// 			<Flashcard
+	// 				front={flashcardsDecks[deckName][cardNumber].front}
+	// 				back={flashcardsDecks[deckName][cardNumber].back}
+	// 			/>
+	// 		);
+	// 	}
+	// }, [deckName, cardNumber, flashcardsDecks]);
 
 	const nextCardHandler = point => {
 		if (!isItLastCard && cardNumber === flashcardsDecks[deckName].length - 1) {
@@ -50,7 +84,9 @@ const FlashcardsStudying = ({location, flashcardsDecks}) => {
 						<Button>edit decks</Button>
 					</Link>
 				</span>
-				<span className={`${classes.Points} ${classes.PointsSmall}`}>POINTS: {points}</span>
+				<span className={`${classes.Points} ${classes.PointsSmall}`}>
+					{isItLastCard && <span>This session is over, </span>} POINTS: {points}
+				</span>
 				<span className={classes.ControlButtons}>
 					<Button
 						additionalStyles={classes.SmButton}
@@ -70,14 +106,15 @@ const FlashcardsStudying = ({location, flashcardsDecks}) => {
 				</span>
 			</div>
 			<div className={classes.FlashcardsStudyingRight}>
-				{deckName !== '' && flashcardsDecks[deckName].length !== 0 ? (
+				{flashcard}
+				{/* {deckName !== '' && isAuth && flashcardsDecks[deckName].length !== 0 ? (
 					<Flashcard
 						front={flashcardsDecks[deckName][cardNumber].front}
 						back={flashcardsDecks[deckName][cardNumber].back}
 					/>
 				) : (
 					<Flashcard front={''} back={''} />
-				)}
+				)} */}
 			</div>
 		</div>
 	);
@@ -85,8 +122,13 @@ const FlashcardsStudying = ({location, flashcardsDecks}) => {
 
 const mapStateToProps = state => {
 	return {
+		isAuth: state.auth.token !== null,
 		flashcardsDecks: state.flashcardsDecks,
 	};
 };
-
-export default connect(mapStateToProps)(FlashcardsStudying);
+const mapDispatchToProps = dispatch => {
+	return {
+		onRetrieveFlashcardsData: () => dispatch(actions.retrieveFlashcardsData),
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(FlashcardsStudying);
