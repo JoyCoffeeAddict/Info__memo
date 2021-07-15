@@ -2,7 +2,10 @@
 $navbar-height: 10vh;
 
 $footer-height: 6vh;
-
+:root {
+	--navbar-height: #{$navbar-height};
+	--footer-height: #{$footer-height};
+}
 $paragraph-max-width: 520px;
 
 @mixin for-phone-only {

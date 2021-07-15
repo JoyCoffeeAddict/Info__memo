@@ -8,6 +8,7 @@ import Spinner from './components/UI/Spinner/Spinner';
 
 // I believe code splitting everything is better than nothing,
 //but i actually have to little knowledge to decide what to split and what to not.
+
 const FlashcardsHelp = React.lazy(() => import('./pages/FlashcardsHelp/FlashcardsHelp'));
 const QuestionsHelp = React.lazy(() => import('./pages/QuestionsHelp/QuestionsHelp'));
 const Flashcards = React.lazy(() => import('./pages/Flashcards/Flashcards'));
@@ -27,7 +28,15 @@ const App = props => {
 			<Route path="/" exact component={Main} />
 			<React.Suspense
 				fallback={
-					<div style={{height: '100%', width: '100%', display: 'grid'}}>
+					<div
+						style={{
+							height: 'calc(100vh - var(--navbar-height) - var(--footer-height)',
+							marginTop: 'var(--navbar-height)',
+							width: '100%',
+							display: 'grid',
+							alignItems: 'center',
+							justifyContent: 'center',
+						}}>
 						<Spinner />
 					</div>
 				}>
