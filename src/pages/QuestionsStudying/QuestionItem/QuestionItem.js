@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+
 import * as actions from '../../../store/actions/actions';
 import * as questionColors from '../../../shared/questionColors';
 import classes from './QuestionItem.module.scss';
+import DeleteIcon from '../../../components/UI/DeleteIcon/DeleteIcon';
 const QuestionItem = ({questionText, listName, color, id, onChangeColor, onDeleteQuestion}) => {
 	let [QuestionClasses, setQuestionClasses] = useState(`${classes.Question}`);
 
@@ -43,11 +43,12 @@ const QuestionItem = ({questionText, listName, color, id, onChangeColor, onDelet
 				<span
 					onClick={() => QuestionBackgroundHandler(questionColors.RED)}
 					className={`${classes.Color} ${classes.ColorRed}`}></span>
-				<FontAwesomeIcon
+				{/* <FontAwesomeIcon
 					icon={faTrashAlt}
 					className={classes.DeleteQuestion}
 					onClick={() => onDeleteQuestion(listName, id)}
-				/>
+				/> */}
+				<DeleteIcon clicked={() => onDeleteQuestion(listName, id)} />
 			</span>
 		</div>
 	);

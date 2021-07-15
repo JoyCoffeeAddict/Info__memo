@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import classes from './DeckItem.module.scss';
-import {faPlay, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faPlay} from '@fortawesome/free-solid-svg-icons';
+import DeleteIcon from '../../../components/UI/DeleteIcon/DeleteIcon';
 const DeckItem = ({deck, setActiveDeckName, deleteDeck}) => {
 	let ChoseDeckItemClasses = `${classes.ChoseDeckItem}`;
 	if (deck.isActive) {
@@ -24,8 +25,7 @@ const DeckItem = ({deck, setActiveDeckName, deleteDeck}) => {
 				<FontAwesomeIcon icon={faPlay} className={classes.active} />
 			</div>
 			<div className={classes.DeleteDeckItem} onClick={deleteDeck}>
-				<FontAwesomeIcon icon={faTrashAlt} className={classes.default} />
-				<FontAwesomeIcon icon={faTrashAlt} className={classes.active} />
+				<DeleteIcon />
 			</div>
 		</div>
 	);

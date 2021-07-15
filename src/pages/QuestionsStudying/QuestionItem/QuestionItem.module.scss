@@ -20,19 +20,6 @@
 	}
 }
 .ControlButtons {
-	display: flex;
-	gap: 1rem;
-	flex-direction: row;
-	padding-left: 3rem;
-	opacity: 0;
-	transition: opacity 0.3s linear;
-}
-.ControlButtons:hover {
-	opacity: 1;
-	transition: opacity 0.3s linear;
-}
-.Color,
-.DeleteQuestion {
 	--icon-size: 1.5rem;
 	@include for-tablet-landscape-up {
 		--icon-size: 2rem;
@@ -40,17 +27,24 @@
 	@include for-desktop-up {
 		--icon-size: 2.5rem;
 	}
-}
-
-.Color {
-	display: inline-block;
-	height: var(--icon-size);
-	width: var(--icon-size);
-	border: 2px solid black;
-	border-radius: 50%;
-}
-.DeleteQuestion {
+	display: flex;
+	gap: 1rem;
+	flex-direction: row;
+	padding-left: 3rem;
+	opacity: 0;
+	transition: opacity 0.3s linear;
 	font-size: var(--icon-size);
+	.Color {
+		display: inline-block;
+		height: var(--icon-size);
+		width: var(--icon-size);
+		border: 2px solid black;
+		border-radius: 50%;
+	}
+}
+.ControlButtons:hover {
+	opacity: 1;
+	transition: opacity 0.3s linear;
 }
 
 .ColorGreen {

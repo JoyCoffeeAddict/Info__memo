@@ -1,0 +1,36 @@
+.DeleteIcon {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 0.5rem;
+	margin: -0.5rem 0;
+}
+.DeleteIcon > .default {
+	font-size: inherit;
+	text-align: center;
+	z-index: 20;
+	transition: opacity 0.2s linear, transform 0.2s;
+}
+
+/* I've tried to create more readable solution, 
+but this is at least optimized*/
+.DeleteIcon > .active {
+	position: absolute;
+	color: #f00;
+	padding: inherit;
+	opacity: 0;
+	z-index: 10;
+	transition: opacity 0.2s linear;
+	width: 100%;
+	height: 100%;
+}
+
+.DeleteIcon:hover > .active {
+	opacity: 1;
+}
+
+.DeleteIcon:hover > .default {
+	opacity: 0;
+}
