@@ -4,11 +4,12 @@ import {connect} from 'react-redux';
 import * as actions from './store/actions/actions';
 import Layout from './components/Layout/Layout';
 import Main from './pages/Main/Main';
-import FlashcardsHelp from './pages/FlashcardsHelp/FlashcardsHelp';
-import QuestionsHelp from './pages/QuestionsHelp/QuestionsHelp';
+import Spinner from './components/UI/Spinner/Spinner';
 
 // I believe code splitting everything is better than nothing,
 //but i actually have to little knowledge to decide what to split and what to not.
+const FlashcardsHelp = React.lazy(() => import('./pages/FlashcardsHelp/FlashcardsHelp'));
+const QuestionsHelp = React.lazy(() => import('./pages/QuestionsHelp/QuestionsHelp'));
 const Flashcards = React.lazy(() => import('./pages/Flashcards/Flashcards'));
 const FlashcardsEditDecks = React.lazy(() => import('./pages/FlashcardsEditDecks/FlashcardsEditDecks'));
 const FlashcardsStudying = React.lazy(() => import('./pages/FlashcardsStudying/FlashcardsStudying'));
@@ -24,9 +25,14 @@ const App = props => {
 	let routes = (
 		<Switch>
 			<Route path="/" exact component={Main} />
-			<Route path="/flashcards-help" exact component={FlashcardsHelp} />
-			<Route path="/questions-help" exact component={QuestionsHelp} />
-			<React.Suspense fallback={<p>Loading ...</p>}>
+			<React.Suspense
+				fallback={
+					<div style={{height: '100%', width: '100%', display: 'grid'}}>
+						<Spinner />
+					</div>
+				}>
+				<Route path="/flashcards-help" exact component={FlashcardsHelp} />
+				<Route path="/questions-help" exact component={QuestionsHelp} />
 				<Route path="/flashcards" exact component={Flashcards} />
 				<Route path="/flashcards-edit-decks" exact component={FlashcardsEditDecks} />
 				<Route path="/flashcards-studying" exact component={FlashcardsStudying} />

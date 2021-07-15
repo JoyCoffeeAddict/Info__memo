@@ -3,20 +3,19 @@
 	position: fixed;
 	z-index: 500;
 	background-color: white;
-	padding: 0 16px;
+	padding: 0 1rem;
 	border: 1px solid #000;
-	border-radius: 40px;
+	border-radius: 2.5rem;
 	inset: 5% 1rem;
 
 	transition: all 0.5s ease-out;
 
 	@include for-tablet-landscape-up {
 		inset: 5% 12.5%;
-		padding: 32px 72px;
+		padding: 2rem 4rem;
 	}
 
 	@include for-big-desktop-up {
-		inset: 15% 25%;
-		padding: 32px 72px;
+		inset: 10% 30%;
 	}
 }
