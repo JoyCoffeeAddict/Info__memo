@@ -29,10 +29,8 @@ const FlashcardsStudying = ({location, flashcardsDecks, isAuth, onRetrieveFlashc
 	}, [location.search]);
 
 	let flashcard = useMemo(() => {
-		console.log(deckName, flashcardsDecks[deckName], cardNumber);
 		if (deckName === '') return <Flashcard front={''} back={''} />;
 		if (flashcardsDecks[deckName]) {
-			console.log('this should work');
 			return (
 				<Flashcard
 					front={flashcardsDecks[deckName][cardNumber].front}
@@ -41,19 +39,6 @@ const FlashcardsStudying = ({location, flashcardsDecks, isAuth, onRetrieveFlashc
 			);
 		}
 	}, [deckName, cardNumber, flashcardsDecks]);
-	// useEffect(() => {
-	// 	console.log(deckName, flashcardsDecks[deckName], cardNumber);
-	// 	if (deckName === '') flashcard = <Flashcard front={''} back={''} />;
-	// 	if (flashcardsDecks[deckName]) {
-	// 		console.log('this should work');
-	// 		flashcard = (
-	// 			<Flashcard
-	// 				front={flashcardsDecks[deckName][cardNumber].front}
-	// 				back={flashcardsDecks[deckName][cardNumber].back}
-	// 			/>
-	// 		);
-	// 	}
-	// }, [deckName, cardNumber, flashcardsDecks]);
 
 	const nextCardHandler = point => {
 		if (!isItLastCard && cardNumber === flashcardsDecks[deckName].length - 1) {

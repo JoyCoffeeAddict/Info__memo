@@ -9,7 +9,6 @@ const ListItem = ({location, deleteListFunction, children}) => (
 		<span
 			className={classes.DeleteList}
 			onClick={list => {
-				console.log('delete func is working');
 				deleteListFunction(list);
 			}}>
 			<FontAwesomeIcon icon={faTrashAlt} className={classes.default} />

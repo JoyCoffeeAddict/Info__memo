@@ -25,26 +25,6 @@
 	}
 }
 
-// .FlashcardsHelpLeft {
-// 	display: flex;
-// 	flex-direction: column;
-// 	justify-content: center;
-// 	font-size: 1.4rem;
-// }
-// .FlashcardsHelpLeft > p {
-// 	margin: 0 auto;
-// }
-// .FlashcardsHelpRight {
-// 	margin: auto;
-// 	display: grid;
-// 	grid-auto-flow: row;
-// 	gap: 2rem;
-// 	width: clamp(18rem, 100%, 34rem);
-// 	@include for-tablet-landscape-up {
-// 		width: clamp(23rem, 100%, 40rem);
-// 	}
-// }
-
 .FlashcardsHelpLink,
 .FlashcardsHelpButton {
 	width: 100%;

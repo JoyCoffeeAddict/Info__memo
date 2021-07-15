@@ -31,7 +31,6 @@ const FlashcardsStudying = ({
 		let tempListName = location.search;
 		//remove ? question mark from location.search
 		tempListName = tempListName.slice(1);
-		console.log(location.search);
 		setListName(tempListName);
 	}, [location.search]);
 

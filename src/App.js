@@ -2,17 +2,19 @@ import React, {useEffect} from 'react';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from './store/actions/actions';
-
 import Layout from './components/Layout/Layout';
 import Main from './pages/Main/Main';
-import Flashcards from './pages/Flashcards/Flashcards';
 import FlashcardsHelp from './pages/FlashcardsHelp/FlashcardsHelp';
 import QuestionsHelp from './pages/QuestionsHelp/QuestionsHelp';
-import FlashcardsEditDecks from './pages/FlashcardsEditDecks/FlashcardsEditDecks';
-import FlashcardsStudying from './pages/FlashcardsStudying/FlashcardsStudying';
-import Register from './pages/Auth/Register/Register';
-import Login from './pages/Auth/Login/Login';
-import QuestionsStudying from './pages/QuestionsStudying/QuestionsStudying';
+
+// I believe code splitting everything is better than nothing,
+//but i actually have to little knowledge to decide what to split and what to not.
+const Flashcards = React.lazy(() => import('./pages/Flashcards/Flashcards'));
+const FlashcardsEditDecks = React.lazy(() => import('./pages/FlashcardsEditDecks/FlashcardsEditDecks'));
+const FlashcardsStudying = React.lazy(() => import('./pages/FlashcardsStudying/FlashcardsStudying'));
+const Register = React.lazy(() => import('./pages/Auth/Register/Register'));
+const Login = React.lazy(() => import('./pages/Auth/Login/Login'));
+const QuestionsStudying = React.lazy(() => import('./pages/QuestionsStudying/QuestionsStudying'));
 const App = props => {
 	useEffect(() => {
 		props.onAutoSignIn();
@@ -22,15 +24,16 @@ const App = props => {
 	let routes = (
 		<Switch>
 			<Route path="/" exact component={Main} />
-			<Route path="/flashcards" exact component={Flashcards} />
 			<Route path="/flashcards-help" exact component={FlashcardsHelp} />
-			<Route path="/flashcards-edit-decks" exact component={FlashcardsEditDecks} />
-			<Route path="/flashcards-studying" exact component={FlashcardsStudying} />
 			<Route path="/questions-help" exact component={QuestionsHelp} />
-			<Route path="/questions-studying" exact component={QuestionsStudying} />
-
-			<Route path="/register" exact component={Register} />
-			<Route path="/log-in" exact component={Login} />
+			<React.Suspense fallback={<p>Loading ...</p>}>
+				<Route path="/flashcards" exact component={Flashcards} />
+				<Route path="/flashcards-edit-decks" exact component={FlashcardsEditDecks} />
+				<Route path="/flashcards-studying" exact component={FlashcardsStudying} />
+				<Route path="/questions-studying" exact component={QuestionsStudying} />
+				<Route path="/register" exact component={Register} />
+				<Route path="/log-in" exact component={Login} />
+			</React.Suspense>
 
 			<Redirect to="/" />
 		</Switch>

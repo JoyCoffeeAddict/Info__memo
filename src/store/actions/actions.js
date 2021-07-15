@@ -81,7 +81,6 @@ export const auth = (email, password, isSignup, name = '') => {
 				localStorage.setItem('localId', localId);
 				localStorage.setItem('name', name);
 				dispatch(authSuccess(idToken, localId));
-				// dispatch(retrieveFlashcardsData());
 				dispatch(handleAuthTimeout(expiresIn));
 				if (name && name.trim() !== '') {
 					authChangeUserProfile(idToken, name);
@@ -94,7 +93,6 @@ export const auth = (email, password, isSignup, name = '') => {
 };
 
 export const autoSignIn = dispatch => {
-	console.log('autoshignin');
 	const token = localStorage.getItem('token');
 	if (!token) {
 		dispatch(logout());
@@ -107,7 +105,6 @@ export const autoSignIn = dispatch => {
 			//here will be sth about user Name
 			//const name = localStorage.getItem('name');
 			dispatch(authSuccess(token, localId));
-			// dispatch(retrieveFlashcardsData());
 		}
 	}
 	dispatch({type: actionTypes.AUTO_SIGN_IN});
@@ -145,7 +142,6 @@ export const deleteCard = (deckName, cardNumber) => {
 };
 
 const retrieveFlashcardsDataThunk = () => async (dispatch, getState) => {
-	console.log('retriveData');
 	const state = getState();
 	let response;
 	try {
@@ -199,7 +195,6 @@ export const addQuestion = (question, listName) => {
 };
 
 export const changeColor = (listName, id, color) => {
-	console.log('Dispatched change color');
 	return {
 		type: actionTypes.CHANGE_COLOR,
 		listName,
@@ -218,7 +213,6 @@ export const deleteQuestion = (listName, id) => {
 
 // INTENTIONALLY creating separate functions and break DRY function, for more control over retrieving and saving different data
 const retrieveQuestionsDataThunk = () => async (dispatch, getState) => {
-	console.log('retriveQuestionsData');
 	const state = getState();
 	let response;
 	try {

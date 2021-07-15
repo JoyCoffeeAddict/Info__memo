@@ -9,7 +9,6 @@ const QuestionItem = ({questionText, listName, color, id, onChangeColor, onDelet
 	let [QuestionClasses, setQuestionClasses] = useState(`${classes.Question}`);
 
 	const QuestionBackgroundHandler = backgroundColor => {
-		console.log('changed color');
 		onChangeColor(listName, id, backgroundColor);
 	};
 

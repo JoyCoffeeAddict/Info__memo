@@ -29,7 +29,6 @@
 	color: inherit;
 	margin: 0;
 	padding: 0;
-	// display: none;
 }
 .menuButton {
 	background-color: transparent;
@@ -41,39 +40,3 @@
 .menuButton:focus {
 	outline: 2px dotted $color-secondary;
 }
-
-// .Logo {
-// 	height: 2rem;
-// 	font-size: 2rem;
-// 	line-height: 100%;
-// 	text-align: center;
-// 	position: absolute;
-// 	left: 50%;
-// 	top: 50%;
-// 	transform: translate(-50%, -50%);
-// // }
-// .NavRightSide {
-// 	display: flex;
-// 	flex-direction: row;
-// 	position: relative;
-// 	margin-left: auto;
-// }
-
-// .NavRightSide > * {
-// 	margin-left: 60px;
-// }
-
-// .SideDrawerToggler {
-// 	font-size: 2rem;
-// 	width: 2rem;
-// 	height: 2rem;
-// }
-
-// @media (min-width: $grid-breakpoints-lg) {
-// 	.NavigationItems {
-// 		display: flex;
-// 	}
-// 	.SideDrawerToggler {
-// 		display: none;
-// 	}
-// }

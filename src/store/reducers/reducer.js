@@ -21,7 +21,7 @@ const initialState = {
 		],
 	},
 	questionsLists: {
-		// physics: ['What is the unit of energy'],
+		physics: [{questionText: 'What is the unit of energy', color: questionColors.WHITE}],
 		astronomy: [
 			{questionText: 'How far away from Earth is Moon', color: questionColors.WHITE},
 			{questionText: 'How far away from Earth is Moon', color: questionColors.WHITE},
@@ -94,7 +94,6 @@ const deleteCard = (state, action) => {
 };
 
 const retrieveFlashcardsData = (state, action) => {
-	// console.log(state.auth.localId);
 	if (action.decks) {
 		return {...state, flashcardsDecks: action.decks};
 	} else {

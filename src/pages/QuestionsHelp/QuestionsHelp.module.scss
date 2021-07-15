@@ -38,12 +38,7 @@
 	align-content: start;
 	overflow-y: auto;
 }
-// .QuestionsListItem {
-// 	text-align: center;
-// 	font-size: 1.5rem;
-// 	padding: 0.5rem 1rem;
-// 	border-bottom: 1px solid black;
-// }
+
 .createListWrapper {
 	display: flex;
 	flex-direction: row;
@@ -77,5 +72,4 @@
 
 .CreateListInput:focus {
 	outline: 2px solid $color-primary;
-	// border: none;
 }

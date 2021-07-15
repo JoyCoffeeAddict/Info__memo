@@ -1,9 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-// import {ReactComponent as QuestionList} from '../../../assets/QuestionList.svg';
-// import {Link} from 'react-router-dom';
-
-// import QuestionsHelpList from './QuestionsHelpList/QuestionsHelpList';
 import {ReactComponent as QuestionsListSVG} from '../../assets/QuestionsList.svg';
 import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/UI/Modal/Modal';
@@ -40,11 +36,7 @@ const QuestionsHelp = ({
 
 	const addListHandler = () => {
 		if (newListInput.trim() === '') return;
-		// let tempQuestionListArray = [...questionsListsArray];
-		// console.log('handler2');
-		// console.log(tempQuestionListArray);
-		// tempQuestionListArray.push(newListInput);
-		// setQuestionsListsArray(tempQuestionListArray);
+
 		onAddList(newListInput);
 		onSaveQuestionsDataToDB();
 		setNewListInput('');
@@ -67,9 +59,7 @@ const QuestionsHelp = ({
 			);
 		});
 	}
-	//  else {
-	// 	questionList = <span className={classes.QuestionsListItem}>You must create a deck first</span>;
-	// }
+
 	return (
 		<>
 			<div className={`LayoutContent ${classes.QuestionsHelp}`}>
@@ -112,11 +102,7 @@ const QuestionsHelp = ({
 							}}
 						/>
 					</div>
-					<ModalList>
-						{/* <div className={classes.QuestionsList}>
-						</div> */}
-						{questionList}
-					</ModalList>
+					<ModalList>{questionList}</ModalList>
 				</div>
 			</Modal>
 		</>

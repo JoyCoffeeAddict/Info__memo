@@ -53,8 +53,6 @@ const FlashcardsEditDecks = ({
 		setActiveDeckName(tempDecksArray[0].name);
 		setDecksArray(tempDecksArray);
 
-		//TODO: save data somewhere else
-		//DONE: added a button for saving data
 		// eslint-disable-next-line
 	}, [flashcardsDecks]);
 
@@ -90,32 +88,21 @@ const FlashcardsEditDecks = ({
 	}, [cardNumber]);
 
 	// HELPERS FOR ADDING AND DELETING A DECK
-
-	// const addDeckHelper = () => {
-	// 	// let tempDecksArray = [...decksArray];
-	// 	// tempDecksArray.push({name: deckInputValue, isActive: false});
-	// 	// setDecksArray(tempDecksArray);
-	// };
-
 	const AddNewDeckHandler = event => {
 		if (deckInputValue.trim() === '' || flashcardsDecks[deckInputValue]) return;
-		// addDeckHelper();
+
 		onAddDeck(deckInputValue);
 		setDeckInputValue('');
 	};
 
 	const DeleteDeckHandler = deckName => {
 		if (!flashcardsDecks[deckName]) return;
-		// let tempDecksArray = [...decksArray];
-		// let deckToDeleteIndex = tempDecksArray.findIndex(tempDeck => tempDeck.name === deckName);
-		// tempDecksArray.splice(deckToDeleteIndex, 1);
-		// setDecksArray(tempDecksArray);
+
 		onDeleteDeck(deckName);
 		if (deckName === activeDeckName) setActiveDeckName('');
 	};
 
 	//ADDING CARDS INSIDE THE MODAL
-
 	const AddCardToCardsArrayHandler = () => {
 		if (!cardInputFront || !cardInputBack) return;
 		let card = {front: cardInputFront, back: cardInputBack};
