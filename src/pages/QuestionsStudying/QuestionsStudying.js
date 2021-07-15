@@ -64,22 +64,24 @@ const FlashcardsStudying = ({
 
 	return (
 		isAuth && (
-			<div className={classes.QuestionsStudying}>
-				<span className={classes.AddQuestionWrapper}>
-					<Button clicked={() => addQuestionHandler(questionInput, listName)}>Add new question</Button>
-					<input
-						type="text"
-						className={classes.AddQuestionInput}
-						value={questionInput}
-						onChange={event => setQuestionInput(event.target.value)}
-						onKeyPress={event => event.key === 'Enter' && addQuestionHandler(questionInput, listName)}
-					/>
-					<Button clicked={() => onSaveQuestionsDataToDB()} additionalStyles={classes.SaveButton}>
-						<FontAwesomeIcon icon={faSave} />
-					</Button>
-				</span>
-				{listName}
-				{questionsListContent}
+			<div className={classes.QuestionsStudyingWrapper}>
+				<div className={classes.QuestionsStudying}>
+					<span className={classes.AddQuestionWrapper}>
+						<Button clicked={() => addQuestionHandler(questionInput, listName)}>Add new question</Button>
+						<input
+							type="text"
+							className={classes.AddQuestionInput}
+							value={questionInput}
+							onChange={event => setQuestionInput(event.target.value)}
+							onKeyPress={event => event.key === 'Enter' && addQuestionHandler(questionInput, listName)}
+						/>
+						<Button clicked={() => onSaveQuestionsDataToDB()} additionalStyles={classes.SaveButton}>
+							<FontAwesomeIcon icon={faSave} />
+						</Button>
+					</span>
+
+					{questionsListContent}
+				</div>
 			</div>
 		)
 	);

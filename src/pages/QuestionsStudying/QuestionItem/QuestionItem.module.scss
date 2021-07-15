@@ -1,15 +1,22 @@
 @use '../../../scss/colors' as *;
+@use '../../../scss/sizes' as *;
 
 .Question {
 	display: grid;
 
 	grid-template-columns: 1fr auto;
 
-	padding: 0.25rem;
 	border: 1px solid black;
 	border-top: none;
+	padding: 0.25rem;
 	&:first-of-type {
 		border-top: 1px solid black;
+	}
+	@include for-tablet-landscape-up {
+		padding: 0.5rem;
+	}
+	@include for-desktop-up {
+		padding: 0.75rem;
 	}
 }
 .ControlButtons {
@@ -24,13 +31,28 @@
 	opacity: 1;
 	transition: opacity 0.3s linear;
 }
+.Color,
+.DeleteQuestion {
+	--icon-size: 1.5rem;
+	@include for-tablet-landscape-up {
+		--icon-size: 2rem;
+	}
+	@include for-desktop-up {
+		--icon-size: 2.5rem;
+	}
+}
+
 .Color {
 	display: inline-block;
-	height: 1.5rem;
-	width: 1.5rem;
+	height: var(--icon-size);
+	width: var(--icon-size);
 	border: 2px solid black;
 	border-radius: 50%;
 }
+.DeleteQuestion {
+	font-size: var(--icon-size);
+}
+
 .ColorGreen {
 	background-color: $accent-green;
 }
@@ -39,7 +61,4 @@
 }
 .ColorRed {
 	background-color: $accent-red;
-}
-.DeleteQuestion {
-	font-size: 1.5rem;
 }

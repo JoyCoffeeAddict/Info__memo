@@ -54,6 +54,7 @@
 	border: 1px solid black;
 	border-right: none;
 	padding: 0.5rem;
+	height: 2.5rem;
 }
 .CreateList::before {
 	content: '+';
@@ -67,11 +68,11 @@
 .CreateListInput {
 	padding: 0.5rem;
 	width: 100%;
-	border: 0;
 	border: 1px solid black;
 
 	border-radius: 0;
 	line-height: 1.5rem;
+	height: 2.5rem;
 }
 
 .CreateListInput:focus {

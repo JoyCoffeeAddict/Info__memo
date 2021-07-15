@@ -1,13 +1,25 @@
 @use '../../scss/sizes.scss' as *;
 @use '../../scss/colors.scss' as *;
-.QuestionsStudying {
+.QuestionsStudyingWrapper {
 	width: 100%;
 	min-height: 100vh - $navbar-height - $footer-height;
 	margin-top: $navbar-height;
 
 	padding: 1rem;
 }
+.QuestionsStudying {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-flow: row;
+	height: 100%;
+	width: 100%;
+}
 .AddQuestionWrapper {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: 1rem;
+	margin-bottom: 2rem;
 	button {
 		border-radius: 0;
 	}
@@ -15,7 +27,6 @@
 		font-size: 2rem;
 	}
 	@include for-tablet-landscape-up {
-		display: grid;
 		grid-template-columns: 1fr 3fr 1fr;
 		grid-template-rows: 1fr;
 		font-size: 1.5rem;

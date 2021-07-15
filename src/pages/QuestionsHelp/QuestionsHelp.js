@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 // import {Link} from 'react-router-dom';
 
 // import QuestionsHelpList from './QuestionsHelpList/QuestionsHelpList';
-import {ReactComponent as QuestionsList} from '../../assets/QuestionsList.svg';
+import {ReactComponent as QuestionsListSVG} from '../../assets/QuestionsList.svg';
 import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/UI/Modal/Modal';
 import ListItem from './ListItem/ListItem';
@@ -85,7 +85,7 @@ const QuestionsHelp = ({
 				</div>
 				<div className={classes.QuestionsHelpRight}>
 					{/* <QuestionsHelpList /> */}
-					<QuestionsList />
+					<QuestionsListSVG />
 					{isAuth ? (
 						<Button clicked={() => setIsChoosingList(state => !state)}>STUDY</Button>
 					) : (
