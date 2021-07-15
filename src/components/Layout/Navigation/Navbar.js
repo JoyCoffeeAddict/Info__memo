@@ -36,7 +36,7 @@ const Navbar = props => {
 
 const mapStateToProps = state => {
 	return {
-		isAuth: state.auth.token !== null,
+		isAuth: state.auth.error === null && state.auth.token !== null,
 	};
 };
 const mapDispatchToProps = dispatch => {

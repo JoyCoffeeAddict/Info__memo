@@ -77,3 +77,16 @@
 .Submit {
 	align-self: center;
 }
+
+.AuthenticationResponse {
+	align-self: center;
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: center;
+}
+.AuthenticationSuccess {
+	color: darken($accent-green, 50%);
+}
+.AuthenticationFail {
+	color: darken($accent-red, 35%);
+}

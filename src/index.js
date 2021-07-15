@@ -10,14 +10,13 @@ import thunk from 'redux-thunk';
 
 import reducer from './store/reducers/reducer';
 
+console.log(process.env.NODE_ENV);
 const composeEnhancers =
-	(process.env.NODE_ENV !== 'production' &&
-		typeof window !== 'undefined' &&
-		window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-	compose;
+	process.env.NODE_ENV !== 'production' && typeof window !== 'undefined'
+		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+		: compose;
 
 export const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>

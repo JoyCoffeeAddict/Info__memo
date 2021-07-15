@@ -7,7 +7,6 @@ const initialState = {
 		name: '',
 		loading: false,
 		error: null,
-		redirectPath: '/',
 	},
 
 	flashcardsDecks: {
@@ -31,11 +30,11 @@ const initialState = {
 };
 
 const authStart = (state, action) => {
-	return {...state, auth: {error: null, loading: true}};
+	return {...state, auth: {...initialState.auth, error: null, loading: true}};
 };
 
 const authFail = (state, action) => {
-	return {...state, auth: {error: action.error, loading: false}};
+	return {...state, auth: {...initialState.auth, error: action.error, loading: false}};
 };
 
 const authSuccess = (state, action) => {
