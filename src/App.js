@@ -3,9 +3,9 @@ import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from './store/actions/actions';
 import Layout from './components/Layout/Layout';
-import Main from './pages/Main/Main';
 import Spinner from './components/UI/Spinner/Spinner';
 
+import Main from './pages/Main/Main';
 // I believe code splitting everything is better than nothing,
 //but i actually have to little knowledge to decide what to split and what to not.
 
