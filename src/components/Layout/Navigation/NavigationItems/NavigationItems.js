@@ -1,13 +1,13 @@
 import React from 'react';
 import NavigationItem from '../NavigationItem/NavigationItem';
-const NavigationItems = ({logoutFunc, isAuth, isMenuClosed}) => {
+const NavigationItems = ({logoutFunc, isAuth, isMenuClosed, clickLinkFunc}) => {
 	return (
 		<>
 			{/* This is logo, and 'home' button */}
 
 			{isAuth ? (
 				<>
-					<NavigationItem isClosed={isMenuClosed} link="/profile">
+					<NavigationItem isClosed={isMenuClosed} link="/profile" clicked={clickLinkFunc}>
 						Profile
 					</NavigationItem>
 					<NavigationItem isClosed={isMenuClosed} link="/" clicked={logoutFunc}>
@@ -16,10 +16,10 @@ const NavigationItems = ({logoutFunc, isAuth, isMenuClosed}) => {
 				</>
 			) : (
 				<>
-					<NavigationItem isClosed={isMenuClosed} link="/register">
+					<NavigationItem isClosed={isMenuClosed} link="/register" clicked={clickLinkFunc}>
 						Register
 					</NavigationItem>
-					<NavigationItem isClosed={isMenuClosed} link="/log-in">
+					<NavigationItem isClosed={isMenuClosed} link="/log-in" clicked={clickLinkFunc}>
 						Log in
 					</NavigationItem>
 				</>

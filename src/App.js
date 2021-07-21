@@ -11,6 +11,7 @@ import Main from './pages/Main/Main';
 
 const FlashcardsHelp = React.lazy(() => import('./pages/FlashcardsHelp/FlashcardsHelp'));
 const QuestionsHelp = React.lazy(() => import('./pages/QuestionsHelp/QuestionsHelp'));
+const SpacedRepetitionHelp = React.lazy(() => import('./pages/SpacedRepetitionHelp/SpacedRepetitionHelp'));
 const Flashcards = React.lazy(() => import('./pages/Flashcards/Flashcards'));
 const FlashcardsEditDecks = React.lazy(() => import('./pages/FlashcardsEditDecks/FlashcardsEditDecks'));
 const FlashcardsStudying = React.lazy(() => import('./pages/FlashcardsStudying/FlashcardsStudying'));
@@ -42,6 +43,7 @@ const App = props => {
 				}>
 				<Route path="/flashcards-help" exact component={FlashcardsHelp} />
 				<Route path="/questions-help" exact component={QuestionsHelp} />
+				<Route path="/spaced-repetition-help" exact component={SpacedRepetitionHelp} />
 				<Route path="/flashcards" exact component={Flashcards} />
 				<Route path="/flashcards-edit-decks" exact component={FlashcardsEditDecks} />
 				<Route path="/flashcards-studying" exact component={FlashcardsStudying} />

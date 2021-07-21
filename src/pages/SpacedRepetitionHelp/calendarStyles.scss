@@ -1,0 +1,46 @@
+@use '../../scss/colors' as *;
+.calendar {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.react-calendar__viewContainer {
+	height: 100%;
+
+	//month-view, year-view etc
+	> div {
+		height: 100%;
+		//some useless div
+		> div {
+			height: 100%;
+			//some other div without a class, god bless me
+			> div {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				> :nth-child(2) {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+.react-calendar__tile--active {
+	background: $color-primary;
+	&:enabled:hover,
+	&:enabled:focus {
+		background: $color-primary;
+	}
+}
+.react-calendar__tile--now {
+	background: $color-secondary;
+	&:enabled:hover,
+	&:enabled:focus {
+		background: $color-secondary;
+	}
+}
+
+.react-calendar button {
+	font-size: clamp(1rem, 1.8vw, 2rem);
+}
