@@ -11,13 +11,13 @@ const Methods = props => (
 		<Link to="/flashcards-help">
 			<Flashcards />
 		</Link>
-		<Link to="/" className={classes.Disabled}>
+		{/* <Link to="/" className={classes.Disabled}>
 			<Soon className={classes.Disabled} />
 		</Link>
 
 		<Link to="/spaced-repetition-help">
 			<SpacedRepetition />
-		</Link>
+		</Link> */}
 		<Link to="/questions-help">
 			<Questions />
 		</Link>

@@ -30,9 +30,9 @@ const FlashcardsHelp = props => (
 					<Button additionalStyles={classes.FlashcardsHelpButton}>STUDY</Button>
 				</Link>
 			) : (
-				<Button ButtonType="NotActive" additionalStyles={classes.FlashcardsHelpButton}>
-					First, you have to log in
-				</Button>
+				<Link to="/log-in" className={classes.FlashcardsHelpButton}>
+					<Button>First, you have to log in</Button>
+				</Link>
 			)}
 		</div>
 	</div>

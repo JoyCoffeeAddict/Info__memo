@@ -1,14 +1,23 @@
-import React, {useState} from 'react';
-import Calendar from 'react-calendar';
+import React, {useState, useCallback} from 'react';
 import {connect} from 'react-redux';
 import Button from '../../components/UI/Button/Button';
 import {Link} from 'react-router-dom';
+import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './calendarStyles.scss';
+import '../../shared/calendarStyles.scss';
+
 import classes from './SpacedRepetitionHelp.module.scss';
 const SpacedRepetitionHelp = ({isAuth}) => {
-	const [value, onChange] = useState(new Date());
+	const [value, setValue] = useState();
 
+	const onChange = useCallback(
+		value => {
+			setValue(value);
+		},
+		[setValue]
+	);
+
+	console.log(value);
 	return (
 		<div className={`LayoutContent `}>
 			<div className={classes.SpacedRepetitionHelp}>
@@ -25,9 +34,9 @@ const SpacedRepetitionHelp = ({isAuth}) => {
 				</div>
 
 				<div className={classes.Right}>
-					<Calendar onChange={() => onChange()} value={value} className="calendar" />
+					<Calendar onChange={onChange} value={value} className="calendar" />
 					{isAuth ? (
-						<Link to="/spaced-repetition-study">
+						<Link to="/spaced-repetition-studying">
 							<Button>STUDY</Button>
 						</Link>
 					) : (

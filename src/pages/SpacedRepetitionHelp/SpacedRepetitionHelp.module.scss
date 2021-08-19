@@ -1,23 +1,2 @@
-@use '../../scss/sizes'as *;
-
 .SpacedRepetitionHelp {
-	@include for-tablet-landscape-up {
-		width: clamp(56rem, 70%, 90rem);
-
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2rem;
-		margin: auto;
-		height: 100%;
-		align-items: center;
-	}
-}
-.Right {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	@include for-tablet-landscape-up {
-		height: 100%;
-		max-height: 60vw;
-	}
 }

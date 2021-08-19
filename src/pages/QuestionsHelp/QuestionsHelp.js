@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {ReactComponent as QuestionsListSVG} from '../../assets/QuestionsList.svg';
+import {Link} from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/UI/Modal/Modal';
 import ListItem from './ListItem/ListItem';
@@ -79,7 +80,9 @@ const QuestionsHelp = ({
 					{isAuth ? (
 						<Button clicked={() => setIsChoosingList(state => !state)}>STUDY</Button>
 					) : (
-						<Button ButtonType="NotActive">First, you have to log in</Button>
+						<Link to="/log-in">
+							<Button>First, you have to log in</Button>
+						</Link>
 					)}
 				</div>
 			</div>

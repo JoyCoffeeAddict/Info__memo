@@ -1,0 +1,21 @@
+.SpacedRepetitionStudying {
+	display: grid;
+	width: 100%;
+	height: 100%;
+	grid-template-columns: repeat(2, 1fr);
+}
+.Input {
+	width: 100%;
+	height: 100%;
+}
+.Notepad {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	gap: 1rem;
+}
+
+.Notes {
+	border: 1px solid black;
+	padding: 1rem;
+}
