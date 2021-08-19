@@ -12,3 +12,8 @@ Here is the list of appopriate authors:
 
 1. Instagram - @andrewtneel | Donations - paypal.me/AndrewNeel
 2. Photo by @Elijah Hail on Unsplash
+
+TODO:
+
+1. Another study method: Spaced repetition -> calendar with option to set notes, about future study.
+2. User profile: image, name, password change, bio and study-contnet sharing

@@ -24,6 +24,7 @@ const Navbar = props => {
 									isMenuClosed={isMenuClosed}
 									logoutFunc={props.onLogout}
 									isAuth={props.isAuth}
+									clickLinkFunc={() => setIsMenuClosed(prevState => !prevState)}
 								/>
 							</ul>
 						</nav>
