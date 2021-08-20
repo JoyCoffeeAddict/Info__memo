@@ -1,3 +1,5 @@
+@use '../../../scss/colors' as *;
+
 .InputWrapper {
 	position: relative;
 	display: grid;
@@ -41,8 +43,10 @@
 	transform: translateY(0);
 }
 .InvalidResponse {
+	--font-size: 0.9rem;
 	line-height: 150%;
-	font-size: 0.75rem;
-	height: 0.75rem;
-	/* color: #cc0000; */
+	font-size: var(--font-size);
+	height: var(--font-size);
+	color: adjust-color($accent-red, $lightness: - 33%);
+	font-weight: 600;
 }

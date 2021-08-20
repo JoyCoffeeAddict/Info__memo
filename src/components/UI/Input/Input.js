@@ -1,5 +1,5 @@
 import React from 'react';
-import './Input.css';
+import classes from './Input.module.scss';
 const Input = ({
 	inputValue,
 	setValue,
@@ -10,10 +10,10 @@ const Input = ({
 	isRequired,
 	pressedEnter,
 }) => (
-	<div className="InputWrapper">
-		<label className="Label">
+	<div className={classes.InputWrapper}>
+		<label className={classes.Label}>
 			<input
-				className="Input"
+				className={classes.Input}
 				type={inputType}
 				placeholder=""
 				value={inputValue}
@@ -22,9 +22,9 @@ const Input = ({
 				// For 'Enter' only
 				onKeyPress={pressedEnter}
 			/>
-			<span className="LabelDescription">{labelDescription}</span>
+			<span className={classes.LabelDescription}>{labelDescription}</span>
 		</label>
-		<span className="InvalidResponse">{!isInputCorrect && inputValue !== '' ? invalidResponse : ''}</span>
+		<span className={classes.InvalidResponse}>{!isInputCorrect && inputValue !== '' ? invalidResponse : ''}</span>
 	</div>
 );
 

@@ -8,7 +8,13 @@ const NavigationItems = ({logoutFunc, isAuth, isMenuClosed, clickLinkFunc}) => {
 					<NavigationItem isClosed={isMenuClosed} link="/profile" clicked={clickLinkFunc}>
 						Profile
 					</NavigationItem>
-					<NavigationItem isClosed={isMenuClosed} link="/" clicked={logoutFunc}>
+					<NavigationItem
+						isClosed={isMenuClosed}
+						link="/"
+						clicked={() => {
+							logoutFunc();
+							clickLinkFunc();
+						}}>
 						Logout
 					</NavigationItem>
 				</>
